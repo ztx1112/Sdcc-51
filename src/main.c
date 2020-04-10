@@ -4,7 +4,7 @@
 #include "EEPROM.h"
 #include "D:\\SDK\\msc51\\adc.h"
 
-#define Maxact 4;
+int Maxact=4;
 
 sbit X0 = P1^2;
 sbit X1 = P1^3;
@@ -78,7 +78,7 @@ int main()
 		}
 	}
 	EEPROM_read_n(0x0000,&act,1);
-	if(act!<Maxact)act=0;
+	if(!(act<Maxact))act=0;
 	P1=0XFF;
 	P3=0XFF;
 	while(1)

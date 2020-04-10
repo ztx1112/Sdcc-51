@@ -272,3 +272,30 @@
 
 
 [cl.eide] : [F7730281-5469-11CB-87F8-F9FCBC3479FE] : log at : 2020/4/10|17:59:48|GMT+0800
+[cl.eide] : [F7730281-5469-11CB-87F8-F9FCBC3479FE] : log at : 2020/4/10|21:50:15|GMT+0800
+[Error] : Error: EBUSY: resource busy or locked, open 'c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.EIDE\EIDE.json'
+	at Object.openSync (fs.js:447:3)
+	at Object.func (electron/js2c/asar.js:140:31)
+	at Object.func [as openSync] (electron/js2c/asar.js:140:31)
+	at Object.writeFileSync (fs.js:1206:35)
+	at File.Write (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\lib\node-utility\File.js:234:12)
+	at ProjectConfiguration.Save (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:58:27)
+	at ProjectConfiguration.Save (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:492:15)
+	at EIDEProject.UpdateDataChangedCount (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProject.js:1024:37)
+	at EventEmitter.<anonymous> (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProject.js:1055:18)
+	at EventEmitter.emit (events.js:203:13)
+	at ProjectConfiguration.emit (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:50:21)
+	at EventEmitter.<anonymous> (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProject.js:1084:23)
+	at EventEmitter.emit (events.js:203:13)
+	at EIDEProject.emit (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProject.js:837:28)
+	at FileWatcher.watcher.OnRename (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProject.js:938:47)
+	at FSWatcher.<anonymous> (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\lib\node-utility\FileWatcher.js:17:34)
+	at FSWatcher.emit (events.js:203:13)
+	at FSEvent.FSWatcher._handle.onchange (internal/fs/watchers.js:131:12)
+
+
+
+[cl.eide] : [F7730281-5469-11CB-87F8-F9FCBC3479FE] : log at : 2020/4/10|22:01:16|GMT+0800
+
+
+

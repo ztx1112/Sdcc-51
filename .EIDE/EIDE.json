@@ -8,8 +8,6 @@
                 {
                     "name": "default",
                     "incList": [
-                        "c:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\.\\dependence\\build-in",
-                        "c:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\.\\dependence\\build-in\\STD",
                         "d:\\SDK\\msc51",
                         "c:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\.\\dependence"
                     ],
@@ -29,12 +27,9 @@
                 {
                     "name": "STD",
                     "incList": [
-                        "c:\\Keil_v5\\C51\\INC",
-                        "c:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\.\\dependence\\build-in\\STD"
+                        "c:\\Keil_v5\\C51\\INC"
                     ],
-                    "sourceDirList": [
-                        "c:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\.\\dependence\\build-in\\STD"
-                    ],
+                    "sourceDirList": [],
                     "libList": [
                         "c:\\Keil_v5\\C51\\LIB"
                     ],

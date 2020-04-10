@@ -1,0 +1,350 @@
+LX51 LINKER/LOCATER V4.66.62.0                                                          04/10/2020  21:53:51  PAGE 1
+
+
+LX51 LINKER/LOCATER V4.66.62.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\LX51.EXE c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\out\Soft_UART.obj, c:\Users\Administra
+>> tor\Documents\Source\MCU\Sdcc-51\.\out\main.obj, c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\out\EEPROM.obj
+>> , c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\out\ADC.obj TO c:\Users\Administrator\Documents\Source\MCU\Sd
+>> cc-51\.\out\main REGFILE (c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\out\main.ORC) PRINT (c:\Users\Adminis
+>> trator\Documents\Source\MCU\Sdcc-51\.\out\main.map) REMOVEUNUSED
+
+
+CPU MODE:     8051 MODE
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\out\Soft_UART.obj (SOFT_UART)
+         COMMENT TYPE 0: C51 V9.55
+  c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\out\main.obj (MAIN)
+         COMMENT TYPE 0: C51 V9.55
+  c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\out\EEPROM.obj (EEPROM)
+         COMMENT TYPE 0: C51 V9.55
+  c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\out\ADC.obj (ADC)
+         COMMENT TYPE 0: C51 V9.55
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CLDPTR)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CLDOPTR)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CSTPTR)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+
+
+ACTIVE MEMORY CLASSES OF MODULE:  c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\out\main (SOFT_UART)
+
+BASE        START       END         USED      MEMORY CLASS
+==========================================================
+C:000000H   C:000000H   C:00FFFFH   0003F4H   CODE
+I:000000H   I:000000H   I:00007FH   00001AH   DATA
+I:000000H   I:000000H   I:0000FFH   000001H   IDATA
+
+
+MEMORY MAP OF MODULE:  c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\out\main (SOFT_UART)
+
+
+START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
+=========================================================================
+
+* * * * * * * * * * *   D A T A   M E M O R Y   * * * * * * * * * * * * *
+000000H   000007H   000008H   ---    AT..     DATA           "REG BANK 0"
+000008H   000012H   00000BH   BYTE   UNIT     DATA           ?DT?MAIN
+000013H   000019H   000007H   BYTE   UNIT     DATA           _DATA_GROUP_
+00001AH   00001AH   000001H   BYTE   UNIT     IDATA          ?STACK
+
+* * * * * * * * * * *   C O D E   M E M O R Y   * * * * * * * * * * * * *
+000000H   000002H   000003H   ---    OFFS..   CODE           ?CO??C_STARTUP?0
+000003H   000028H   000026H   BYTE   INBLOCK  CODE           ?PR?_TXSEND?SOFT_UART
+000029H   00002AH   000002H   ---    ---      **GAP**
+00002BH   00002CH   000002H   BYTE   OFFS..   CODE           ?ADC?0002B
+00002DH   000156H   00012AH   BYTE   INBLOCK  CODE           ?PR?MAIN?MAIN
+000157H   0001B3H   00005DH   BYTE   INBLOCK  CODE           ?PR?_GET_ADC10BITRESULT?ADC
+0001B4H   0001EEH   00003BH   BYTE   INBLOCK  CODE           ?PR?_EEPROM_READ_N?EEPROM
+0001EFH   000229H   00003BH   BYTE   INBLOCK  CODE           ?PR?_EEPROM_WRITE_N?EEPROM
+00022AH   00024CH   000023H   BYTE   INBLOCK  CODE           ?PR?ACT4?MAIN
+00024DH   00026CH   000020H   BYTE   INBLOCK  CODE           ?PR?ACT3?MAIN
+00026DH   00028BH   00001FH   BYTE   INBLOCK  CODE           ?PR?_DELAY_MS?MAIN
+LX51 LINKER/LOCATER V4.66.62.0                                                        04/10/2020  21:53:51  PAGE 2
+
+
+00028CH   0002A9H   00001EH   BYTE   INBLOCK  CODE           ?PR?ADCINIT?MAIN
+0002AAH   0002C6H   00001DH   BYTE   INBLOCK  CODE           ?PR?ACT1?MAIN
+0002C7H   0002DAH   000014H   BYTE   INBLOCK  CODE           ?PR?ACT2?MAIN
+0002DBH   0002E8H   00000EH   BYTE   INBLOCK  CODE           ?PR?BITTIME?SOFT_UART
+0002E9H   0002F6H   00000EH   BYTE   INBLOCK  CODE           ?PR?DISABLEEEPROM?EEPROM
+0002F7H   0002FAH   000004H   BYTE   INBLOCK  CODE           ?PR?ADC_INT?ADC
+0002FBH   000352H   000058H   BYTE   UNIT     CODE           ?C?LIB_CODE
+000353H   000369H   000017H   BYTE   UNIT     CODE           ?C_INITSEG
+00036AH   000AF3H   00078AH   ---    ---      **GAP**
+000AF4H   000B7FH   00008CH   BYTE   UNIT     CODE           ?C_C51STARTUP
+
+* * * * * * * * *   R E M O V E D     S E G M E N T S   * * * * * * * *
+   *DEL*:           00000FH   BYTE   INBLOCK  CODE           ?PR?_PRINTSTRING?SOFT_UART
+   *DEL*:           000001H   BYTE   INBLOCK  CODE           ?PR?ADCEXCUTE?MAIN
+   *DEL*:           00001EH   BYTE   INBLOCK  CODE           ?PR?_EEPROM_SECTORERASE?EEPROM
+   *DEL*:           00004DH   BYTE   INBLOCK  CODE           ?PR?_ADC_INILIZE?ADC
+   *DEL*:           00000BH   BYTE   INBLOCK  CODE           ?PR?_ADC_POWERCONTROL?ADC
+
+
+
+OVERLAY MAP OF MODULE:   c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\out\main (SOFT_UART)
+
+
+FUNCTION/MODULE                  BIT_GROUP   DATA_GROUP 
+--> CALLED FUNCTION/MODULE      START  STOP  START  STOP
+========================================================
+ADC_INT/ADC                     ----- -----  ----- -----
+
+*** NEW ROOT ******************
+
+?C_C51STARTUP                   ----- -----  ----- -----
+  +--> MAIN/MAIN
+  +--> ?C_INITSEG
+
+MAIN/MAIN                       ----- -----  ----- -----
+  +--> ADCINIT/MAIN
+  +--> _DELAY_MS/MAIN
+  +--> _GET_ADC10BITRESULT/ADC
+  +--> _TXSEND/SOFT_UART
+  +--> _EEPROM_READ_N/EEPROM
+  +--> ACT1/MAIN
+  +--> ACT2/MAIN
+  +--> ACT3/MAIN
+  +--> ACT4/MAIN
+  +--> _EEPROM_WRITE_N/EEPROM
+
+ADCINIT/MAIN                    ----- -----  ----- -----
+  +--> _DELAY_MS/MAIN
+
+_DELAY_MS/MAIN                  ----- -----  ----- -----
+
+_GET_ADC10BITRESULT/ADC         ----- -----  ----- -----
+
+_TXSEND/SOFT_UART               ----- -----  ----- -----
+  +--> BITTIME/SOFT_UART
+
+BITTIME/SOFT_UART               ----- -----  ----- -----
+
+_EEPROM_READ_N/EEPROM           ----- -----  0013H 0019H
+  +--> DISABLEEEPROM/EEPROM
+
+DISABLEEEPROM/EEPROM            ----- -----  ----- -----
+
+ACT1/MAIN                       ----- -----  ----- -----
+  +--> _DELAY_MS/MAIN
+LX51 LINKER/LOCATER V4.66.62.0                                                        04/10/2020  21:53:51  PAGE 3
+
+
+
+ACT2/MAIN                       ----- -----  ----- -----
+  +--> _DELAY_MS/MAIN
+
+ACT3/MAIN                       ----- -----  ----- -----
+  +--> _DELAY_MS/MAIN
+
+ACT4/MAIN                       ----- -----  ----- -----
+  +--> _DELAY_MS/MAIN
+
+_EEPROM_WRITE_N/EEPROM          ----- -----  0013H 0019H
+  +--> DISABLEEEPROM/EEPROM
+
+?C_INITSEG                      ----- -----  ----- -----
+
+
+
+PUBLIC SYMBOLS OF MODULE:  c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\out\main (SOFT_UART)
+
+
+      VALUE       CLASS    TYPE      PUBLIC SYMBOL NAME
+      =================================================
+      00000013H   DATA     BYTE      ?_EEPROM_read_n?BYTE
+      00000013H   DATA     BYTE      ?_EEPROM_write_n?BYTE
+      01000314H   CODE     ---       ?C?CLDOPTR
+      010002FBH   CODE     ---       ?C?CLDPTR
+      00000000H   NUMBER   ---       ?C?CODESEG
+      01000341H   CODE     ---       ?C?CSTPTR
+      00000000H   NUMBER   ---       ?C?XDATASEG
+      01000B3BH   CODE     ---       ?C_START
+      01000000H   CODE     ---       ?C_STARTUP
+*DEL*:00000000H   CODE     ---       _ADC_Inilize
+*DEL*:00000000H   CODE     ---       _ADC_PowerControl
+      01000275H   CODE     ---       _delay_ms
+      010001B4H   CODE     ---       _EEPROM_read_n
+*DEL*:00000000H   CODE     ---       _EEPROM_SectorErase
+      010001EFH   CODE     ---       _EEPROM_write_n
+      01000157H   CODE     ---       _Get_ADC10bitResult
+*DEL*:00000000H   CODE     ---       _PrintString
+      01000003H   CODE     ---       _TxSend
+      00000008H   DATA     BYTE      act
+      010002AAH   CODE     ---       Act1
+      010002C7H   CODE     ---       Act2
+      0100024DH   CODE     ---       Act3
+      0100022AH   CODE     ---       Act4
+      010002F7H   CODE     ---       ADC_int
+*DEL*:00000000H   CODE     ---       AdcExcute
+      0100028CH   CODE     ---       AdcInit
+      010002DBH   CODE     ---       BitTime
+      010002E9H   CODE     ---       DisableEEPROM
+      00000010H   DATA     INT       i
+      0100002DH   CODE     ---       main
+      0000000DH   DATA     INT       Maxact
+      00000012H   DATA     BYTE      n
+      00000009H   DATA     WORD      result1
+      0000000BH   DATA     WORD      result2
+      0000000FH   DATA     BYTE      X3X
+
+
+
+SYMBOL TABLE OF MODULE:  c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\out\main (SOFT_UART)
+
+      VALUE       REP       CLASS    TYPE      SYMBOL NAME
+      ====================================================
+      ---         MODULE    ---      ---       SOFT_UART
+LX51 LINKER/LOCATER V4.66.62.0                                                        04/10/2020  21:53:51  PAGE 4
+
+
+      01000003H   PUBLIC    CODE     ---       _TxSend
+      010002DBH   PUBLIC    CODE     ---       BitTime
+
+      010002DBH   BLOCK     CODE     ---       LVL=0
+      010002DBH   BLOCK     CODE     NEAR LAB  LVL=1
+      00000006H   SYMBOL    DATA     VOID      i
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000003H   BLOCK     CODE     ---       LVL=0
+      01000005H   BLOCK     CODE     NEAR LAB  LVL=1
+      00000004H   SYMBOL    DATA     VOID      i
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      ---         MODULE    ---      ---       MAIN
+      00000012H   PUBLIC    DATA     BYTE      n
+      00000010H   PUBLIC    DATA     INT       i
+      0000000FH   PUBLIC    DATA     BYTE      X3X
+      0000000DH   PUBLIC    DATA     INT       Maxact
+      0000000BH   PUBLIC    DATA     WORD      result2
+      00000009H   PUBLIC    DATA     WORD      result1
+      00000008H   PUBLIC    DATA     BYTE      act
+      0100028CH   PUBLIC    CODE     ---       AdcInit
+      0100022AH   PUBLIC    CODE     ---       Act4
+      0100024DH   PUBLIC    CODE     ---       Act3
+      010002C7H   PUBLIC    CODE     ---       Act2
+      010002AAH   PUBLIC    CODE     ---       Act1
+      0100002DH   PUBLIC    CODE     ---       main
+      01000275H   PUBLIC    CODE     ---       _delay_ms
+
+      0100026DH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000275H   BLOCK     CODE     ---       LVL=0
+      01000275H   BLOCK     CODE     NEAR LAB  LVL=1
+      00000004H   SYMBOL    DATA     VOID      i
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100002DH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010002AAH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010002C7H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100024DH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100022AH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100028CH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      ---         MODULE    ---      ---       EEPROM
+      00000013H   PUBLIC    DATA     BYTE      ?_EEPROM_write_n?BYTE
+      010001EFH   PUBLIC    CODE     ---       _EEPROM_write_n
+      00000013H   PUBLIC    DATA     BYTE      ?_EEPROM_read_n?BYTE
+      010001B4H   PUBLIC    CODE     ---       _EEPROM_read_n
+      010002E9H   PUBLIC    CODE     ---       DisableEEPROM
+
+LX51 LINKER/LOCATER V4.66.62.0                                                        04/10/2020  21:53:51  PAGE 5
+
+
+      010002E9H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010001B4H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010001EFH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      ---         MODULE    ---      ---       ADC
+      010002F7H   PUBLIC    CODE     ---       ADC_int
+      01000157H   PUBLIC    CODE     ---       _Get_ADC10bitResult
+
+      01000157H   BLOCK     CODE     ---       LVL=0
+      01000157H   BLOCK     CODE     NEAR LAB  LVL=1
+      00000004H   SYMBOL    DATA     VOID      adc
+      00000003H   SYMBOL    DATA     VOID      i
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010002F7H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      ---         MODULE    ---      ---       ?C_STARTUP
+      01000000H   PUBLIC    CODE     ---       ?C_STARTUP
+
+      ---         MODULE    ---      ---       ?C?CLDPTR
+      010002FBH   PUBLIC    CODE     ---       ?C?CLDPTR
+
+      ---         MODULE    ---      ---       ?C?CLDOPTR
+      01000314H   PUBLIC    CODE     ---       ?C?CLDOPTR
+
+      ---         MODULE    ---      ---       ?C?CSTPTR
+      01000341H   PUBLIC    CODE     ---       ?C?CSTPTR
+
+      ---         MODULE    ---      ---       ?C_INIT
+      01000B3BH   PUBLIC    CODE     ---       ?C_START
+
+
+
+FUNCTION REGISTER MASKS
+
+
+FUNCTION . . . . . . . . REG MASK
+==================================
+
+_ADC_Inilize . . . . . . @0x1e000881
+_ADC_PowerControl. . . . @0x18000000
+_delay_ms. . . . . . . . @0x080008f0
+_EEPROM_read_n . . . . . @0x1e0008b6
+_EEPROM_SectorErase. . . @0x080008b0
+_EEPROM_write_n. . . . . @0x1e0008b6
+_Get_ADC10bitResult. . . @0x180008f9
+_PrintString . . . . . . @0x1e0008f0
+_TxSend. . . . . . . . . @0x180008f0
+Act1 . . . . . . . . . . @0x080008f0
+Act2 . . . . . . . . . . @0x080008f0
+Act3 . . . . . . . . . . @0x080008f0
+Act4 . . . . . . . . . . @0x080008f0
+ADC_int. . . . . . . . . @0x80000000
+AdcExcute. . . . . . . . @0x80000000
+AdcInit. . . . . . . . . @0x080008f0
+BitTime. . . . . . . . . @0x080008c0
+DisableEEPROM. . . . . . @0x08000800
+
+LX51 LINKER/LOCATER V4.66.62.0                                                        04/10/2020  21:53:51  PAGE 6
+
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0392H BYTE (44%) *
+******************************************************************************
+
+Program Size: data=27.0 xdata=0 const=0 code=1012
+LX51 RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

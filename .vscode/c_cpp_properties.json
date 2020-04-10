@@ -3,10 +3,8 @@
         {
             "name": "win32",
             "includePath": [
-                "c:\\Users\\Administrator\\Documents\\Source\\MCU\\maoya\\.\\dependence\\build-in",
-                "c:\\Users\\Administrator\\Documents\\Source\\MCU\\maoya\\.\\dependence\\build-in\\STD",
                 "d:\\SDK\\msc51",
-                "c:\\Users\\Administrator\\Documents\\Source\\MCU\\maoya\\.\\dependence",
+                "c:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\.\\dependence",
                 "c:\\Keil_v5\\C51\\INC"
             ],
             "defines": [],
