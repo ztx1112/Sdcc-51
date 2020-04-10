@@ -1,0 +1,58 @@
+{
+    "name": "Sdcc-51",
+    "type": "C51",
+    "dependenceList": [
+        {
+            "groupName": "custom",
+            "depList": [
+                {
+                    "name": "default",
+                    "incList": [
+                        "c:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\.\\dependence\\build-in",
+                        "c:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\.\\dependence\\build-in\\STD",
+                        "d:\\SDK\\msc51",
+                        "c:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\.\\dependence"
+                    ],
+                    "libList": [
+                        "d:\\SDK\\msc51"
+                    ],
+                    "sourceDirList": [
+                        "d:\\SDK\\msc51"
+                    ],
+                    "defineList": []
+                }
+            ]
+        },
+        {
+            "groupName": "build-in",
+            "depList": [
+                {
+                    "name": "STD",
+                    "incList": [
+                        "c:\\Keil_v5\\C51\\INC",
+                        "c:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\.\\dependence\\build-in\\STD"
+                    ],
+                    "sourceDirList": [
+                        "c:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\.\\dependence\\build-in\\STD"
+                    ],
+                    "libList": [
+                        "c:\\Keil_v5\\C51\\LIB"
+                    ],
+                    "defineList": []
+                }
+            ]
+        }
+    ],
+    "compileConfig": {
+        "optimizationLevel": "8",
+        "optimizationType": "1",
+        "ramMode": "SMALL",
+        "romMode": "SMALL",
+        "removeUnusedCode": true
+    },
+    "srcDirs": [
+        ".\\src",
+        ".\\dependence"
+    ],
+    "outDir": ".\\out"
+}

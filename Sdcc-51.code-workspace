@@ -1,0 +1,14 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "C_Cpp.default.intelliSenseMode": "gcc-x86",
+        "C_Cpp.errorSquiggles": "Disabled",
+        "C_Cpp.default.cppStandard": "c++98",
+        "C_Cpp.default.cStandard": "c89",
+        "terminal.explorerKind": "integrated"
+    }
+}
