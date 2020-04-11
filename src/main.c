@@ -112,6 +112,7 @@ int main()
 				if(X3X==1)
 				{
 					act++;
+					if(act>Maxact)act=0;
 					EEPROM_write_n(0x0000,&act,1);
 					delay_ms(5);
 				}
