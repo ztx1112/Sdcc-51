@@ -299,3 +299,185 @@
 
 
 
+[cl.eide] : [F7730281-5469-11CB-87F8-F9FCBC3479FE] : log at : 2020/4/11|11:41:39|GMT+0800
+      [cl.eide] : [F7730281-5469-11CB-87F8-F9FCBC3479FE] : log at : 2020/4/11|13:11:40|GMT+0800
+[Error] : SyntaxError: Unexpected token   in JSON at position 0
+	at JSON.parse (<anonymous>)
+	at WorkspaceConfiguration.Parse (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:61:21)
+	at WorkspaceConfiguration.Update (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:54:28)
+	at WorkspaceConfiguration.Init (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:31:18)
+	at new Configuration (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:24:14)
+	at new WorkspaceConfiguration (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:1112:1)
+	at EIDEProject.LoadConfigurations (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProject.js:963:28)
+	at EIDEProject.Load (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProject.js:873:14)
+	at ProjectDataProvider._OpenProject (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:674:21)
+	at EventEmitter.<anonymous> (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:260:30)
+	at EventEmitter.emit (events.js:203:13)
+	at Function.emit (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\GlobalEvents.js:24:51)
+	at EventEmitter.<anonymous> (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\extension.js:90:36)
+	at EventEmitter.emit (events.js:203:13)
+	at Function.emit (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\GlobalEvents.js:24:51)
+	at ProjectDataProvider.LoadWorkspaceProject (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:262:48)
+	at new ProjectDataProvider (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:250:14)
+	at new ProjectExplorer (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:908:29)
+	at activate (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\extension.js:28:27)
+	at Function._callActivateOptional (c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:788:244)
+	at Function._callActivate (c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:787:909)
+	at c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:786:960
+	at async Promise.all (index 7)
+
+
+
+[cl.eide] : [F7730281-5469-11CB-87F8-F9FCBC3479FE] : log at : 2020/4/11|13:20:13|GMT+0800
+[Error] : SyntaxError: Unexpected token   in JSON at position 0
+	at JSON.parse (<anonymous>)
+	at WorkspaceConfiguration.Parse (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:61:21)
+	at WorkspaceConfiguration.Update (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:54:28)
+	at WorkspaceConfiguration.Init (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:31:18)
+	at new Configuration (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:24:14)
+	at new WorkspaceConfiguration (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:1112:1)
+	at EIDEProject.LoadConfigurations (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProject.js:963:28)
+	at EIDEProject.Load (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProject.js:873:14)
+	at ProjectDataProvider._OpenProject (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:674:21)
+	at EventEmitter.<anonymous> (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:260:30)
+	at EventEmitter.emit (events.js:203:13)
+	at Function.emit (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\GlobalEvents.js:24:51)
+	at EventEmitter.<anonymous> (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\extension.js:90:36)
+	at EventEmitter.emit (events.js:203:13)
+	at Function.emit (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\GlobalEvents.js:24:51)
+	at ProjectDataProvider.LoadWorkspaceProject (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:262:48)
+	at new ProjectDataProvider (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:250:14)
+	at new ProjectExplorer (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:908:29)
+	at activate (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\extension.js:28:27)
+	at Function._callActivateOptional (c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:788:244)
+	at Function._callActivate (c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:787:909)
+	at c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:786:960
+	at async Promise.all (index 7)
+
+
+
+[cl.eide] : [F7730281-5469-11CB-87F8-F9FCBC3479FE] : log at : 2020/4/11|13:23:45|GMT+0800
+[Error] : SyntaxError: Unexpected token   in JSON at position 0
+	at JSON.parse (<anonymous>)
+	at WorkspaceConfiguration.Parse (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:61:21)
+	at WorkspaceConfiguration.Update (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:54:28)
+	at WorkspaceConfiguration.Init (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:31:18)
+	at new Configuration (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:24:14)
+	at new WorkspaceConfiguration (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:1112:1)
+	at EIDEProject.LoadConfigurations (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProject.js:963:28)
+	at EIDEProject.Load (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProject.js:873:14)
+	at ProjectDataProvider._OpenProject (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:674:21)
+	at EventEmitter.<anonymous> (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:260:30)
+	at EventEmitter.emit (events.js:203:13)
+	at Function.emit (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\GlobalEvents.js:24:51)
+	at EventEmitter.<anonymous> (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\extension.js:90:36)
+	at EventEmitter.emit (events.js:203:13)
+	at Function.emit (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\GlobalEvents.js:24:51)
+	at ProjectDataProvider.LoadWorkspaceProject (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:262:48)
+	at new ProjectDataProvider (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:250:14)
+	at new ProjectExplorer (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:908:29)
+	at activate (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\extension.js:28:27)
+	at Function._callActivateOptional (c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:788:244)
+	at Function._callActivate (c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:787:909)
+	at c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:786:960
+	at async Promise.all (index 7)
+
+
+
+[cl.eide] : [F7730281-5469-11CB-87F8-F9FCBC3479FE] : log at : 2020/4/11|13:24:01|GMT+0800
+[Error] : SyntaxError: Unexpected token   in JSON at position 0
+	at JSON.parse (<anonymous>)
+	at WorkspaceConfiguration.Parse (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:61:21)
+	at WorkspaceConfiguration.Update (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:54:28)
+	at WorkspaceConfiguration.Init (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:31:18)
+	at new Configuration (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:24:14)
+	at new WorkspaceConfiguration (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:1112:1)
+	at EIDEProject.LoadConfigurations (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProject.js:963:28)
+	at EIDEProject.Load (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProject.js:873:14)
+	at ProjectDataProvider._OpenProject (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:674:21)
+	at EventEmitter.<anonymous> (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:260:30)
+	at EventEmitter.emit (events.js:203:13)
+	at Function.emit (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\GlobalEvents.js:24:51)
+	at EventEmitter.<anonymous> (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\extension.js:90:36)
+	at EventEmitter.emit (events.js:203:13)
+	at Function.emit (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\GlobalEvents.js:24:51)
+	at ProjectDataProvider.LoadWorkspaceProject (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:262:48)
+	at new ProjectDataProvider (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:250:14)
+	at new ProjectExplorer (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:908:29)
+	at activate (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\extension.js:28:27)
+	at Function._callActivateOptional (c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:788:244)
+	at Function._callActivate (c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:787:909)
+	at c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:786:960
+	at async Promise.all (index 7)
+
+
+
+[Error] : Error: write EPIPE
+	at afterWriteDispatched (internal/stream_base_commons.js:146:25)
+	at writeGeneric (internal/stream_base_commons.js:137:3)
+	at Socket._writeGeneric (net.js:698:11)
+	at Socket._write (net.js:710:8)
+	at doWrite (_stream_writable.js:418:12)
+	at writeOrBuffer (_stream_writable.js:402:5)
+	at Socket.Writable.write (_stream_writable.js:302:11)
+	at d.write (c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:212:867)
+	at f._writeNow (c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:205:110)
+	at Immediate.<anonymous> (c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:205:48)
+	at processImmediate (internal/timers.js:439:21)
+[cl.eide] : [F7730281-5469-11CB-87F8-F9FCBC3479FE] : log at : 2020/4/11|13:46:23|GMT+0800
+[Error] : SyntaxError: Unexpected token   in JSON at position 0
+	at JSON.parse (<anonymous>)
+	at ProjectConfiguration.Parse (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:61:21)
+	at ProjectConfiguration.Update (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:54:28)
+	at ProjectConfiguration.Init (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:31:18)
+	at new Configuration (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:24:14)
+	at new ProjectConfiguration (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:100:9)
+	at EIDEProject.LoadConfigurations (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProject.js:964:28)
+	at EIDEProject.Load (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProject.js:873:14)
+	at ProjectDataProvider._OpenProject (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:674:21)
+	at EventEmitter.<anonymous> (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:260:30)
+	at EventEmitter.emit (events.js:203:13)
+	at Function.emit (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\GlobalEvents.js:24:51)
+	at EventEmitter.<anonymous> (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\extension.js:90:36)
+	at EventEmitter.emit (events.js:203:13)
+	at Function.emit (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\GlobalEvents.js:24:51)
+	at ProjectDataProvider.LoadWorkspaceProject (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:262:48)
+	at new ProjectDataProvider (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:250:14)
+	at new ProjectExplorer (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:908:29)
+	at activate (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\extension.js:28:27)
+	at Function._callActivateOptional (c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:788:244)
+	at Function._callActivate (c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:787:909)
+	at c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:786:960
+	at async Promise.all (index 7)
+
+
+
+[cl.eide] : [F7730281-5469-11CB-87F8-F9FCBC3479FE] : log at : 2020/4/11|13:48:14|GMT+0800
+[Error] : SyntaxError: Unexpected token   in JSON at position 0
+	at JSON.parse (<anonymous>)
+	at CppConfiguration.Parse (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:61:21)
+	at CppConfiguration.Update (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:54:28)
+	at CppConfiguration.Init (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:31:18)
+	at new Configuration (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:24:14)
+	at new CppConfiguration (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDETypeDefine.js:1094:1)
+	at EIDEProject.LoadConfigurations (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProject.js:965:28)
+	at EIDEProject.Load (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProject.js:873:14)
+	at ProjectDataProvider._OpenProject (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:674:21)
+	at EventEmitter.<anonymous> (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:260:30)
+	at EventEmitter.emit (events.js:203:13)
+	at Function.emit (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\GlobalEvents.js:24:51)
+	at EventEmitter.<anonymous> (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\extension.js:90:36)
+	at EventEmitter.emit (events.js:203:13)
+	at Function.emit (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\GlobalEvents.js:24:51)
+	at ProjectDataProvider.LoadWorkspaceProject (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:262:48)
+	at new ProjectDataProvider (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:250:14)
+	at new ProjectExplorer (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\EIDEProjectExplorer.js:908:29)
+	at activate (c:\Users\Administrator\.vscode\extensions\cl.eide-1.1.1\out\src\extension.js:28:27)
+	at Function._callActivateOptional (c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:788:244)
+	at Function._callActivate (c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:787:909)
+	at c:\Program Files\Microsoft VS Code\resources\app\out\vs\workbench\services\extensions\node\extensionHostProcess.js:786:960
+	at async Promise.all (index 7)
+
+
+
+[cl.eide] : [F7730281-5469-11CB-87F8-F9FCBC3479FE] : log at : 2020/4/11|13:48:59|GMT+0800
