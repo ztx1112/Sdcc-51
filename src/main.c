@@ -113,6 +113,8 @@ int main()
 				{
 					act++;
 					if(act>Maxact)act=0;
+					EEPROM_SectorErase(0x00);
+					delay_ms(5);
 					EEPROM_write_n(0x0000,&act,1);
 					delay_ms(5);
 				}
