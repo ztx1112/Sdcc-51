@@ -1,4 +1,4 @@
-C51 COMPILER V9.55   MAIN                                                                  04/14/2020 19:15:57 PAGE 1   
+C51 COMPILER V9.55   MAIN                                                                  04/17/2020 16:32:31 PAGE 1   
 
 
 C51 COMPILER V9.55, COMPILATION OF MODULE MAIN
@@ -11,122 +11,122 @@ COMPILER INVOKED BY: c:\Keil_v5\C51\BIN\C51.exe c:\Users\Administrator\Documents
 
 line level    source
 
-   1          #include "STC15Fxxxx.H"
-   2          #include "soft_uart.h"
+   1          #include "C:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\src\\STC15Fxxxx.H"
+   2          #include "C:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\src\\USART.h"
    3          #include <intrins.h>
-   4          #include "EEPROM.h"
-   5          #include "D:\\SDK\\msc51\\adc.h"
+   4          #include "C:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\src\\EEPROM.h"
+   5          #include "C:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\src\\adc.h"
    6          
    7          static int Maxact=3;
-   8          
-   9          sbit X0 = P1^2;
-  10          sbit X1 = P1^3;
-  11          sbit X2 = P1^4;
-  12          sbit X3 = P1^5;
-  13          
-  14          sbit Y0 = P3^3;
-  15          sbit Y1 = P3^2;
-  16          
-  17          int Act1(); //大先小后
-  18          int Act2(); //仅大
-  19          int Act3(); //小大小大
-  20          int Act4(); //小大大小
-  21          
-  22          void AdcInit();
-  23          int AdcExcute();
-  24          
-  25          
-  26          
-  27          
-  28          void  delay_ms(unsigned int ms)
-  29          {
-  30   1           unsigned int i;
-  31   1         do{
-  32   2              i = 12000000L / 13000;
-  33   2            while(--i)  ;   //14T per loop
-  34   2           }while(--ms);
-  35   1      }
-  36          
-  37          u16 result1=0;
-  38          u16 result2=0;
-  39          u8 act;
-  40          u8 n=0;
-  41          int i=0;
-  42          u8 X3X=1;
-  43          int main()
-  44          {
-  45   1        AdcInit();
-  46   1        delay_ms(100);
-  47   1        Get_ADC10bitResult(0);
-  48   1        delay_ms(100);
-  49   1        result1=Get_ADC10bitResult(0);
-  50   1        delay_ms(100);
-  51   1        Get_ADC10bitResult(1);
-C51 COMPILER V9.55   MAIN                                                                  04/14/2020 19:15:57 PAGE 2   
+   8          static u8 Makeup1,Makeup2;
+   9          
+  10          sbit X0 = P1^2;
+  11          sbit X1 = P1^3;
+  12          sbit X2 = P1^4;
+  13          sbit X3 = P1^5;
+  14          
+  15          sbit Y0 = P3^3;
+  16          sbit Y1 = P3^2;
+  17          
+  18          int Act1(); //大先小后
+  19          int Act2(); //仅大
+  20          int Act3(); //小大小大
+  21          int Act4(); //小大大小
+  22          
+  23          void AdcInit();
+  24          int AdcExcute();
+  25          int UARTInit();
+  26          int UARTRead();
+  27          int EEPROMend();
+  28          
+  29          
+  30          
+  31          void  delay_ms(unsigned int ms)
+  32          {
+  33   1          unsigned int i;
+  34   1        do{
+  35   2            i = 12000000L / 13000;
+  36   2          while(--i)  ;   //14T per loop
+  37   2          }while(--ms);
+  38   1      }
+  39          
+  40          u16 result1=0;
+  41          u16 result2=0;
+  42          u8 act;
+  43          u8 n=0;
+  44          int i=0;
+  45          u8 X3X=1;
+  46          u16 addr;
+  47          
+  48          int main()
+  49          {
+  50   1        AdcInit();
+  51   1        delay_ms(100);
+C51 COMPILER V9.55   MAIN                                                                  04/17/2020 16:32:31 PAGE 2   
 
-  52   1        delay_ms(100);
-  53   1        result2=Get_ADC10bitResult(1);
-  54   1        if(result1==1024)
-  55   1        {
-  56   2          while(1)
-  57   2          {
-  58   3            delay_ms(200);
-  59   3            TxSend(0x99);
-  60   3            delay_ms(50);
-  61   3            TxSend((u8)result1);
-  62   3            delay_ms(50);
-  63   3            TxSend((u8)result2);
-  64   3          }
-  65   2        }
-  66   1        if(result2==1024)
-  67   1        {
-  68   2          while(1)
-  69   2          {
-  70   3            delay_ms(200);
-  71   3            TxSend(0x99);
-  72   3            delay_ms(50);
-  73   3            TxSend((u8)result1);
-  74   3            delay_ms(50);
-  75   3            TxSend((u8)result2);
-  76   3          }
-  77   2        }
-  78   1        result1=result1-500;
-  79   1        result2=result2-400;
-  80   1        EEPROM_read_n(0x0000,&act,1);
-  81   1        if(act>Maxact)act=0;
-  82   1        P1=0XFF;
-  83   1        P3=0XFF;
-  84   1        while(1)
-  85   1        {
-  86   2          if((X1!=0)&&(X2!=0))
-  87   2          {
-  88   3            if(X0==0)
-  89   3            {
-  90   4              delay_ms(5);
-  91   4              if(X0!=0)break;
-  92   4              switch (act)
-  93   4              {
-  94   5              case 0:
-  95   5                Act1();
-  96   5                break;
-  97   5              case 1:
-  98   5                Act2();
-  99   5                break;
- 100   5              case 2:
- 101   5                Act3();
- 102   5                break;
- 103   5              case 3:
- 104   5                Act4();
- 105   5                break;
- 106   5              default:
- 107   5                break;
- 108   5              }
+  52   1        
+  53   1        if(result1==1024)
+  54   1        {
+  55   2          while(1)
+  56   2          {
+  57   3            delay_ms(200);
+  58   3            //TxSend(0x99);
+  59   3            delay_ms(50);
+  60   3            //TxSend((u8)result1);
+  61   3            delay_ms(50);
+  62   3            //TxSend((u8)result2);
+  63   3          }
+  64   2        }
+  65   1        if(result2==1024)
+  66   1        {
+  67   2          while(1)
+  68   2          {
+  69   3            delay_ms(200);
+  70   3            //TxSend(0x99);
+  71   3            delay_ms(50);
+  72   3            //TxSend((u8)result1);
+  73   3            delay_ms(50);
+  74   3            //TxSend((u8)result2);
+  75   3          }
+  76   2        }
+  77   1        EEPROM_read_n(0x0010,&Makeup1,1);
+  78   1        EEPROM_read_n(0x11,&Makeup2,1);
+  79   1        EEPROM_read_n(0x0000,&act,1);
+  80   1        if(act>Maxact)act=0;
+  81   1        P1=0XFF;
+  82   1        P3=0XFF;
+  83   1        while(1)
+  84   1        {
+  85   2          if((X1!=0)&&(X2!=0))
+  86   2          {
+  87   3            if(X0==0)
+  88   3            {
+  89   4              delay_ms(5);
+  90   4              if(X0!=0)break;
+  91   4              switch (act)
+  92   4              {
+  93   5              case 0:
+  94   5                Act1();
+  95   5                break;
+  96   5              case 1:
+  97   5                Act2();
+  98   5                break;
+  99   5              case 2:
+ 100   5                Act3();
+ 101   5                break;
+ 102   5              case 3:
+ 103   5                Act4();
+ 104   5                break;
+ 105   5              default:
+ 106   5                break;
+ 107   5              }
+ 108   4              AdcExcute();
  109   4            }
  110   3            if(X3==0)
  111   3            {
  112   4              if(X3X==1)
  113   4              {
-C51 COMPILER V9.55   MAIN                                                                  04/14/2020 19:15:57 PAGE 3   
+C51 COMPILER V9.55   MAIN                                                                  04/17/2020 16:32:31 PAGE 3   
 
  114   5                act++;
  115   5                if(act>Maxact)act=0;
@@ -138,150 +138,228 @@ line level    source
  121   4            }
  122   3          }
  123   2          X3X=X3;
- 124   2        }
- 125   1      }
- 126              
+ 124   2          EEPROMend();
+ 125   2        }
+ 126   1      }
  127              
  128              
- 129          int Act1()
- 130          {
- 131   1        Y0=0;
- 132   1        while(1)
- 133   1        {
- 134   2          if(X1==0)
- 135   2          {
- 136   3            delay_ms(result1);
- 137   3            Y1=0;
- 138   3            while(1)
- 139   3            {
- 140   4              if(X2==0)
- 141   4              {
- 142   5                delay_ms(result2);
- 143   5                Y1=1;
- 144   5                delay_ms(30);
- 145   5                Y0=1;
- 146   5                return 0;
- 147   5              }
- 148   4            }
- 149   3          }
- 150   2        }
- 151   1      }
- 152          
- 153          int Act2()
- 154          {
- 155   1        Y0=0;
- 156   1        while(1)
- 157   1        {
- 158   2          if(X1==0)
- 159   2          {
- 160   3            delay_ms(result1);
- 161   3            Y0=1;
- 162   3            while(1)
- 163   3            {
- 164   4              if(X1==1)
- 165   4              {
- 166   5                return 0;
- 167   5              }
- 168   4            }
- 169   3          }
- 170   2        }
- 171   1      }
- 172          
- 173          int Act3()
- 174          {
- 175   1        Y1=0;
-C51 COMPILER V9.55   MAIN                                                                  04/14/2020 19:15:57 PAGE 4   
+ 129              
+ 130          int Act1()
+ 131          {
+ 132   1        Y0=0;
+ 133   1        while(1)
+ 134   1        {
+ 135   2          if(X1==0)
+ 136   2          {
+ 137   3            delay_ms(result1);
+ 138   3            Y1=0;
+ 139   3            while(1)
+ 140   3            {
+ 141   4              if(X2==0)
+ 142   4              {
+ 143   5                delay_ms(result2);
+ 144   5                Y1=1;
+ 145   5                delay_ms(30);
+ 146   5                Y0=1;
+ 147   5                return 0;
+ 148   5              }
+ 149   4            }
+ 150   3          }
+ 151   2        }
+ 152   1      }
+ 153          
+ 154          int Act2()
+ 155          {
+ 156   1        Y0=0;
+ 157   1        while(1)
+ 158   1        {
+ 159   2          if(X1==0)
+ 160   2          {
+ 161   3            delay_ms(result1);
+ 162   3            Y0=1;
+ 163   3            while(1)
+ 164   3            {
+ 165   4              if(X1==1)
+ 166   4              {
+ 167   5                return 0;
+ 168   5              }
+ 169   4            }
+ 170   3          }
+ 171   2        }
+ 172   1      }
+ 173          
+ 174          int Act3()
+ 175          {
+C51 COMPILER V9.55   MAIN                                                                  04/17/2020 16:32:31 PAGE 4   
 
- 176   1        while(1)
- 177   1        {
- 178   2          if(X2==0)
- 179   2          {
- 180   3            delay_ms(result2);
- 181   3            Y0=0;
- 182   3            while(1)
- 183   3            {
- 184   4              if(X1==0)
- 185   4              {
- 186   5                delay_ms(result1);
- 187   5                Y1=1;
- 188   5                delay_ms(30);
- 189   5                Y0=1;
- 190   5                while (1)
- 191   5                {
- 192   6                  if(X1==1&&X2==1)
- 193   6                  {
- 194   7                    return;
- 195   7                  }
- 196   6                }
- 197   5                
- 198   5              }
- 199   4            }
- 200   3          }
- 201   2        }
- 202   1      }
- 203          
- 204          int Act4()
- 205          {
- 206   1        Y1=0;
- 207   1        while(1)
- 208   1        {
- 209   2          if(X2==0)
- 210   2          {
- 211   3            delay_ms(result2);
- 212   3            Y0=0;
- 213   3            while(1)
- 214   3            {
- 215   4              if(X1==0)
- 216   4              {
- 217   5                delay_ms(result1);
- 218   5                Y0=1;
- 219   5                delay_ms(30);
- 220   5                Y1=1;
- 221   5                while (1)
- 222   5                {
- 223   6                  if(X1==1&&X2==1)
- 224   6                  {
- 225   7                    return;
- 226   7                  }
- 227   6                }
- 228   5                
- 229   5              }
- 230   4            }
- 231   3          }
- 232   2        }
- 233   1      }
- 234          
+ 176   1        Y1=0;
+ 177   1        while(1)
+ 178   1        {
+ 179   2          if(X2==0)
+ 180   2          {
+ 181   3            delay_ms(result2);
+ 182   3            Y0=0;
+ 183   3            while(1)
+ 184   3            {
+ 185   4              if(X1==0)
+ 186   4              {
+ 187   5                delay_ms(result1);
+ 188   5                Y1=1;
+ 189   5                delay_ms(30);
+ 190   5                Y0=1;
+ 191   5                while (1)
+ 192   5                {
+ 193   6                  if(X1==1&&X2==1)
+ 194   6                  {
+ 195   7                    return;
+ 196   7                  }
+ 197   6                }
+ 198   5                
+ 199   5              }
+ 200   4            }
+ 201   3          }
+ 202   2        }
+ 203   1      }
+ 204          
+ 205          int Act4()
+ 206          {
+ 207   1        Y1=0;
+ 208   1        while(1)
+ 209   1        {
+ 210   2          if(X2==0)
+ 211   2          {
+ 212   3            delay_ms(result2);
+ 213   3            Y0=0;
+ 214   3            while(1)
+ 215   3            {
+ 216   4              if(X1==0)
+ 217   4              {
+ 218   5                delay_ms(result1);
+ 219   5                Y0=1;
+ 220   5                delay_ms(30);
+ 221   5                Y1=1;
+ 222   5                while (1)
+ 223   5                {
+ 224   6                  if(X1==1&&X2==1)
+ 225   6                  {
+ 226   7                    return;
+ 227   7                  }
+ 228   6                }
+ 229   5                
+ 230   5              }
+ 231   4            }
+ 232   3          }
+ 233   2        }
+ 234   1      }
  235          
- 236          void AdcInit()
- 237          {
-C51 COMPILER V9.55   MAIN                                                                  04/14/2020 19:15:57 PAGE 5   
+ 236          
+ 237          void AdcInit()
+C51 COMPILER V9.55   MAIN                                                                  04/17/2020 16:32:31 PAGE 5   
 
- 238   1        P1ASF = ADC_P11 | ADC_P10;
- 239   1        ADC_CONTR = (ADC_CONTR & ~ADC_90T) | ADC_360T;
- 240   1        ADC_CONTR |= 0x80;
- 241   1        CLK_DIV |=  (1<<5); //10位AD结果的高2位放ADC_RES的低2位，低8位在ADC_RESL。
- 242   1        EADC = 1;     //中断允许    ENABLE,DISABLE
- 243   1        PADC = 1;   //优先级设置 PolityHigh,PolityLow
- 244   1        ADC_CONTR |=0x80;
- 245   1        delay_ms(200);
- 246   1      }
- 247          
- 248          int AdcExcute()
- 249          {
- 250   1      
- 251   1      }
-*** WARNING C290 IN LINE 125 OF c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\src\main.c: missing return value
-*** WARNING C290 IN LINE 202 OF c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\src\main.c: missing return value
-*** WARNING C290 IN LINE 233 OF c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\src\main.c: missing return value
-*** WARNING C290 IN LINE 251 OF c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\src\main.c: missing return value
+ 238          {
+ 239   1        P1ASF = ADC_P11 | ADC_P10;
+ 240   1        ADC_CONTR = (ADC_CONTR & ~ADC_90T) | ADC_360T;
+ 241   1        ADC_CONTR |= 0x80;
+ 242   1        CLK_DIV |=  (1<<5); //10位AD结果的高2位放ADC_RES的低2位，低8位在ADC_RESL。
+ 243   1        EADC = 1;     //中断允许    ENABLE,DISABLE
+ 244   1        PADC = 1;   //优先级设置 PolityHigh,PolityLow
+ 245   1        ADC_CONTR |=0x80;
+ 246   1        delay_ms(200);
+ 247   1      }
+ 248          
+ 249          int AdcExcute()
+ 250          {
+ 251   1        Get_ADC10bitResult(0);
+ 252   1        delay_ms(50);
+ 253   1        result1=Get_ADC10bitResult(0);
+ 254   1        delay_ms(50);
+ 255   1        Get_ADC10bitResult(1);
+ 256   1        delay_ms(50);
+ 257   1        result2=Get_ADC10bitResult(1);
+ 258   1        result1=result1-Makeup1;
+ 259   1        result2=result2-Makeup2;
+ 260   1      }
+ 261          
+ 262          
+ 263          int UARTInit()
+ 264          {
+ 265   1        COMx_InitDefine   COMx_InitStructure;         
+ 266   1        COMx_InitStructure.UART_Mode      = UART_8bit_BRTx;   
+ 267   1        COMx_InitStructure.UART_BRT_Use   = BRT_Timer1;     
+ 268   1        COMx_InitStructure.UART_BaudRate  = 115200ul;     
+ 269   1        COMx_InitStructure.UART_RxEnable  = ENABLE;       
+ 270   1        COMx_InitStructure.BaudRateDouble = DISABLE;      
+ 271   1        COMx_InitStructure.UART_Interrupt = ENABLE;       
+ 272   1        COMx_InitStructure.UART_Polity    = PolityLow;      
+ 273   1        COMx_InitStructure.UART_P_SW      = UART1_SW_P30_P31; 
+ 274   1        COMx_InitStructure.UART_RXD_TXD_Short = DISABLE;    
+ 275   1        USART_Configuration(USART1, &COMx_InitStructure);   
+ 276   1      }
+ 277          
+ 278          
+ 279          int UARTRead()
+ 280          {
+ 281   1        if(COM1.RX_TimeOut > 0) 
+ 282   1        {
+ 283   2          if(--COM1.RX_TimeOut == 0)
+ 284   2          {
+ 285   3            switch (RX1_Buffer[0])
+ 286   3            {
+ 287   4            case 'D':
+ 288   4              IAP_CONTR=0x60;
+ 289   4              break;
+ 290   4            case 'u':
+ 291   4              Makeup1+=10;
+ 292   4              break;
+ 293   4            case 'i':
+ 294   4              Makeup1-+10;
+*** WARNING C275 IN LINE 294 OF c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\src\main.c: expression with possib
+             -ly no effect
+ 295   4              break;
+ 296   4            case 'j':
+ 297   4              Makeup2+=10;
+C51 COMPILER V9.55   MAIN                                                                  04/17/2020 16:32:31 PAGE 6   
+
+ 298   4              break;
+ 299   4            case 'k':
+ 300   4              Makeup2-+10;
+*** WARNING C275 IN LINE 300 OF c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\src\main.c: expression with possib
+             -ly no effect
+ 301   4              break;
+ 302   4            default:
+ 303   4              break;
+ 304   4            }
+ 305   3      
+ 306   3            COM1.RX_Cnt = 0;
+ 307   3          }
+ 308   2        }
+ 309   1      }
+ 310          
+ 311          int EEPROMend()
+ 312          {
+ 313   1        EEPROM_SectorErase(0x00);
+ 314   1        delay_ms(5);
+ 315   1        EEPROM_write_n(0x10,&Makeup1,1);
+ 316   1        delay_ms(5);
+ 317   1        EEPROM_write_n(0x11,&Makeup2,1);
+ 318   1        delay_ms(5);
+ 319   1        EEPROM_write_n(0x00,&act,1);
+ 320   1      }
+*** WARNING C290 IN LINE 126 OF c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\src\main.c: missing return value
+*** WARNING C290 IN LINE 203 OF c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\src\main.c: missing return value
+*** WARNING C290 IN LINE 234 OF c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\src\main.c: missing return value
+*** WARNING C290 IN LINE 260 OF c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\src\main.c: missing return value
+*** WARNING C290 IN LINE 276 OF c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\src\main.c: missing return value
+*** WARNING C290 IN LINE 309 OF c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\src\main.c: missing return value
+*** WARNING C290 IN LINE 320 OF c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\.\src\main.c: missing return value
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    492    ----
+   CODE SIZE        =    650    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =     11    ----
+   DATA SIZE        =     15      13
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
    EDATA SIZE       =   ----    ----
@@ -291,4 +369,4 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
 END OF MODULE INFORMATION.
 
 
-C51 COMPILATION COMPLETE.  4 WARNING(S),  0 ERROR(S)
+C51 COMPILATION COMPLETE.  9 WARNING(S),  0 ERROR(S)
