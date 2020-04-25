@@ -1,11 +1,7 @@
 #include "C:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\src\\STC15Fxxxx.H"
-#include "C:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\src\\USART.h"
 #include <intrins.h>
 #include "C:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\src\\EEPROM.h"
 #include "C:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\src\\adc.h"
-
-static int Maxact=3;
-static u8 Makeup1,Makeup2;
 
 sbit X0 = P1^2;
 sbit X1 = P1^3;
@@ -15,6 +11,74 @@ sbit X3 = P1^5;
 sbit Y0 = P3^3;
 sbit Y1 = P3^2;
 
+
+int UartHandle(char);
+#define BRT             (65536 - MAIN_Fosc / 115200 / 4)
+bit busy;
+char wptr;
+char rptr;
+char buffer[16];
+
+unsigned char databit;
+
+void UartIsr() interrupt 4
+{
+    if (TI)
+    {
+        TI = 0;
+        busy = 0;
+    }
+    if (RI)
+    {
+        RI = 0;
+        buffer[wptr++] = SBUF;
+        wptr &= 0x0f;
+    }
+}
+
+void UartInit()
+{
+    SCON = 0x50;
+	TMOD = 0x00;
+    TL1 = BRT;
+	TH1 = BRT >> 8;
+    TR1 = 1;
+	AUXR = 0x40;
+    wptr = 0x00;
+    rptr = 0x00;
+    busy = 0;
+}
+
+void UartSend(char dat)
+{
+    while (busy);
+    busy = 1;
+    SBUF = dat;
+}
+
+void UartSendStr(char *p)
+{
+    while (*p)
+    {
+        UartSend(*p++);
+    }
+}
+
+char UartRead()
+{
+	Y0=0;
+	if (rptr != wptr)
+	{
+		Y1=0;
+        rptr &= 0x0f;
+		UartHandle(buffer[rptr++]);
+	}
+	return 0;
+}
+
+static int Maxact=3;
+static char Makeup1,Makeup2;
+
 int Act1();	//大先小后
 int Act2();	//仅大
 int Act3();	//小大小大
@@ -22,8 +86,6 @@ int Act4();	//小大大小
 
 void AdcInit();
 int AdcExcute();
-int UARTInit();
-int UARTRead();
 int EEPROMend();
 
 
@@ -43,89 +105,9 @@ u8 act;
 u8 n=0;
 int i=0;
 u8 X3X=1;
+u8 X0X=1;
 u16 addr;
-
-int main()
-{
-	AdcInit();
-	delay_ms(100);
 	
-	if(result1==1024)
-	{
-		while(1)
-		{
-			delay_ms(200);
-			//TxSend(0x99);
-			delay_ms(50);
-			//TxSend((u8)result1);
-			delay_ms(50);
-			//TxSend((u8)result2);
-		}
-	}
-	if(result2==1024)
-	{
-		while(1)
-		{
-			delay_ms(200);
-			//TxSend(0x99);
-			delay_ms(50);
-			//TxSend((u8)result1);
-			delay_ms(50);
-			//TxSend((u8)result2);
-		}
-	}
-	EEPROM_read_n(0x0010,&Makeup1,1);
-	EEPROM_read_n(0x11,&Makeup2,1);
-	EEPROM_read_n(0x0000,&act,1);
-	if(act>Maxact)act=0;
-	P1=0XFF;
-	P3=0XFF;
-	while(1)
-	{
-		if((X1!=0)&&(X2!=0))
-		{
-			if(X0==0)
-			{
-				delay_ms(5);
-				if(X0!=0)break;
-				switch (act)
-				{
-				case 0:
-					Act1();
-					break;
-				case 1:
-					Act2();
-					break;
-				case 2:
-					Act3();
-					break;
-				case 3:
-					Act4();
-					break;
-				default:
-					break;
-				}
-				AdcExcute();
-			}
-			if(X3==0)
-			{
-				if(X3X==1)
-				{
-					act++;
-					if(act>Maxact)act=0;
-					EEPROM_SectorErase(0x00);
-					delay_ms(5);
-					EEPROM_write_n(0x0000,&act,1);
-					delay_ms(5);
-				}
-			}
-		}
-		X3X=X3;
-		EEPROMend();
-		UARTRead();
-	}
-}
-		
 		
 		
 int Act1()
@@ -148,8 +130,10 @@ int Act1()
 					return 0;
 				}
 			}
+			return 0;
 		}
 	}
+	return 0;
 }
 
 int Act2()
@@ -168,8 +152,10 @@ int Act2()
 					return 0;
 				}
 			}
+			return 0;
 		}
 	}
+	return 0;
 }
 
 int Act3()
@@ -196,7 +182,7 @@ int Act3()
 							return;
 						}
 					}
-					
+					return 0;
 				}
 			}
 		}
@@ -256,56 +242,40 @@ int AdcExcute()
 	Get_ADC10bitResult(1);
 	delay_ms(50);
 	result2=Get_ADC10bitResult(1);
-	result1=result1-Makeup1;
-	result2=result2-Makeup2;
+	//result1=result1-Makeup1;
+	//result2=result2-Makeup2;
 }
 
 
-int UARTInit()
+int UartHandle(char dat)
 {
-	COMx_InitDefine		COMx_InitStructure;					
-	COMx_InitStructure.UART_Mode      = UART_8bit_BRTx;		
-	COMx_InitStructure.UART_BRT_Use   = BRT_Timer1;			
-	COMx_InitStructure.UART_BaudRate  = 115200ul;			
-	COMx_InitStructure.UART_RxEnable  = ENABLE;				
-	COMx_InitStructure.BaudRateDouble = DISABLE;			
-	COMx_InitStructure.UART_Interrupt = ENABLE;				
-	COMx_InitStructure.UART_Polity    = PolityLow;			
-	COMx_InitStructure.UART_P_SW      = UART1_SW_P30_P31;	
-	COMx_InitStructure.UART_RXD_TXD_Short = DISABLE;		
-	USART_Configuration(USART1, &COMx_InitStructure);		
-}
-
-
-int UARTRead()
-{
-	if(COM1.RX_TimeOut > 0)	
+	Y1=0;
+	switch(dat)
 	{
-		if(--COM1.RX_TimeOut == 0)
+		case 'D':
+			IAP_CONTR=0x60;
+			break;
+		case 'o':
+			Makeup1+=10;
+			break;
+		case 'p':
+			Makeup1-=10;
+			break;
+		case 'k':
+			Makeup2+=10;
+			break;
+		case 'l':
+			Makeup2-=10;
+			break;
+		case 't':
 		{
-			switch (RX1_Buffer[0])
-			{
-			case 'D':
-				IAP_CONTR=0x60;
-				break;
-			case 'u':
-				Makeup1+=10;
-				break;
-			case 'i':
-				Makeup1-+10;
-				break;
-			case 'j':
-				Makeup2+=10;
-				break;
-			case 'k':
-				Makeup2-+10;
-				break;
-			default:
-				break;
-			}
-
-			COM1.RX_Cnt = 0;
+			UartSend(Makeup1);
+			delay_ms(100);
+			UartSend(Makeup2);
+			break;
 		}
+		default:
+			break;
 	}
 }
 
@@ -313,9 +283,88 @@ int EEPROMend()
 {
 	EEPROM_SectorErase(0x00);
 	delay_ms(5);
-	EEPROM_write_n(0x10,&Makeup1,1);
-	delay_ms(5);
-	EEPROM_write_n(0x11,&Makeup2,1);
-	delay_ms(5);
 	EEPROM_write_n(0x00,&act,1);
 }
+
+
+int main()
+{
+	P1M1=0x03;
+	P1M0=0x00;
+	P3M0=0x00;
+	P3M1=0x00;
+
+	AdcInit();
+	delay_ms(300);
+	AdcExcute();
+	while(result1==1024)
+	{
+		delay_ms(500);
+		AdcExcute();
+	}
+	while(result2==1024)
+	{
+		delay_ms(500);
+		AdcExcute();
+	}
+	if(result1<600)result1=650;
+	if(result2<600)result2=650;
+	result1=result1-600;
+	result2=result2-600;
+	EEPROM_read_n(0x0000,&act,1);
+	if(act>Maxact)act=0;
+	if(act<0)act=0;
+	P1=0XFF;
+	act=0;
+	//UartInit();
+	//ES=1;
+	//EA=1;
+	while(1)
+	{
+		if((X1!=0)&&(X2!=0))
+		{
+			if(X0==0)
+			{
+				if(X0X==1)
+				{
+					delay_ms(5);
+					if(X0!=0)break;
+					switch (act)
+					{
+					case 0:
+						Act1();
+						break;
+					case 1:
+						Act2();
+						break;
+					case 2:
+						Act3();
+						break;
+					case 3:
+						Act4();
+						break;
+					default:
+						break;
+					}
+					EEPROMend();
+				}
+			}
+			if(X3==0)
+			{
+				if(X3X==1)
+				{
+					act++;
+					if(act>Maxact)act=0;
+					EEPROM_SectorErase(0x00);
+					delay_ms(5);
+					EEPROM_write_n(0x0000,&act,1);
+					delay_ms(5);
+				}
+			}
+		}
+		X3X=X3;
+		X0X=X0;
+		//UartRead();
+	}
+}
+	
