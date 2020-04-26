@@ -315,38 +315,29 @@ int main()
 	if(act>Maxact)act=0;
 	if(act<0)act=0;
 	P1=0XFF;
-	act=0;
-	//UartInit();
-	//ES=1;
-	//EA=1;
 	while(1)
 	{
 		if((X1!=0)&&(X2!=0))
 		{
-			if(X0==0)
+			delay_ms(5);
+			if(X0==0&&X0X!=0)
 			{
-				if(X0X==1)
+				switch (act)
 				{
-					delay_ms(5);
-					if(X0!=0)break;
-					switch (act)
-					{
-					case 0:
-						Act1();
-						break;
-					case 1:
-						Act2();
-						break;
-					case 2:
-						Act3();
-						break;
-					case 3:
-						Act4();
-						break;
-					default:
-						break;
-					}
-					EEPROMend();
+				case 0:
+					Act1();
+					break;
+				case 1:
+					Act2();
+					break;
+				case 2:
+					Act3();
+					break;
+				case 3:
+					Act4();
+					break;
+				default:
+					break;
 				}
 			}
 			if(X3==0)
@@ -355,7 +346,7 @@ int main()
 				{
 					act++;
 					if(act>Maxact)act=0;
-					EEPROM_SectorErase(0x00);
+					EEPROM_SectorErase(0x0000);
 					delay_ms(5);
 					EEPROM_write_n(0x0000,&act,1);
 					delay_ms(5);
@@ -364,7 +355,6 @@ int main()
 		}
 		X3X=X3;
 		X0X=X0;
-		//UartRead();
 	}
 }
 	
