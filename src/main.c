@@ -320,7 +320,7 @@ int main()
 		if((X1!=0)&&(X2!=0))
 		{
 			delay_ms(5);
-			if(X0==0&&X0X!=0)
+			if(X0==0)
 			{
 				switch (act)
 				{
@@ -339,6 +339,13 @@ int main()
 				default:
 					break;
 				}
+				if(X0==0)
+				{
+					while(1)
+					{
+						if(X0!=0)break;
+					}
+				}
 			}
 			if(X3==0)
 			{
@@ -347,14 +354,14 @@ int main()
 					act++;
 					if(act>Maxact)act=0;
 					EEPROM_SectorErase(0x0000);
-					delay_ms(5);
+					delay_ms(10);
 					EEPROM_write_n(0x0000,&act,1);
-					delay_ms(5);
+					delay_ms(100);
+					IAP_CONTR=0x60;
 				}
 			}
 		}
 		X3X=X3;
-		X0X=X0;
 	}
 }
 	
