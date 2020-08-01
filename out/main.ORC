@@ -5,9 +5,6 @@ $1E0008B6  _EEPROM_read_n
 $080008B0  _EEPROM_SectorErase
 $1E0008B6  _EEPROM_write_n
 $180008F9  _Get_ADC10bitResult
-$180008F0  _UartHandle
-$80000000  _UartSend
-$1E00088E  _UartSendStr
 $080008F0  Act1
 $080008F0  Act2
 $080008F0  Act3
@@ -18,5 +15,3 @@ $080008F0  AdcInit
 $08000800  DisableEEPROM
 $1E0008FE  EEPROMend
 $1E0008FF  main
-$08000800  UartInit
-$18000881  UartIsr

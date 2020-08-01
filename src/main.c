@@ -11,71 +11,6 @@ sbit X3 = P1^5;
 sbit Y0 = P3^3;
 sbit Y1 = P3^2;
 
-
-int UartHandle(char);
-#define BRT             (65536 - MAIN_Fosc / 115200 / 4)
-bit busy;
-char wptr;
-char rptr;
-char buffer[16];
-
-unsigned char databit;
-
-void UartIsr() interrupt 4
-{
-    if (TI)
-    {
-        TI = 0;
-        busy = 0;
-    }
-    if (RI)
-    {
-        RI = 0;
-        buffer[wptr++] = SBUF;
-        wptr &= 0x0f;
-    }
-}
-
-void UartInit()
-{
-    SCON = 0x50;
-	TMOD = 0x00;
-    TL1 = BRT;
-	TH1 = BRT >> 8;
-    TR1 = 1;
-	AUXR = 0x40;
-    wptr = 0x00;
-    rptr = 0x00;
-    busy = 0;
-}
-
-void UartSend(char dat)
-{
-    while (busy);
-    busy = 1;
-    SBUF = dat;
-}
-
-void UartSendStr(char *p)
-{
-    while (*p)
-    {
-        UartSend(*p++);
-    }
-}
-
-char UartRead()
-{
-	Y0=0;
-	if (rptr != wptr)
-	{
-		Y1=0;
-        rptr &= 0x0f;
-		UartHandle(buffer[rptr++]);
-	}
-	return 0;
-}
-
 static int Maxact=3;
 static char Makeup1,Makeup2;
 
@@ -125,7 +60,7 @@ int Act1()
 				{
 					delay_ms(result2);
 					Y1=1;
-					delay_ms(30);
+					delay_ms(50);
 					Y0=1;
 					return 0;
 				}
@@ -247,38 +182,6 @@ int AdcExcute()
 }
 
 
-int UartHandle(char dat)
-{
-	Y1=0;
-	switch(dat)
-	{
-		case 'D':
-			IAP_CONTR=0x60;
-			break;
-		case 'o':
-			Makeup1+=10;
-			break;
-		case 'p':
-			Makeup1-=10;
-			break;
-		case 'k':
-			Makeup2+=10;
-			break;
-		case 'l':
-			Makeup2-=10;
-			break;
-		case 't':
-		{
-			UartSend(Makeup1);
-			delay_ms(100);
-			UartSend(Makeup2);
-			break;
-		}
-		default:
-			break;
-	}
-}
-
 int EEPROMend()
 {
 	EEPROM_SectorErase(0x00);
@@ -347,21 +250,20 @@ int main()
 					}
 				}
 			}
+		}
+		if(X3==0)
+		{
+			delay_ms(10);
 			if(X3==0)
 			{
-				if(X3X==1)
-				{
-					act++;
-					if(act>Maxact)act=0;
-					EEPROM_SectorErase(0x0000);
-					delay_ms(10);
-					EEPROM_write_n(0x0000,&act,1);
-					delay_ms(100);
-					IAP_CONTR=0x60;
-				}
+				act++;
+				if(act>Maxact)act=0;
+				EEPROM_SectorErase(0x0000);
+				delay_ms(100);
+				EEPROM_write_n(0x0000,&act,1);
+				delay_ms(100);
+				IAP_CONTR=0x60;
 			}
 		}
-		X3X=X3;
 	}
 }
-	
