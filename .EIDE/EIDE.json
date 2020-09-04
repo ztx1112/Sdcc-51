@@ -9,7 +9,7 @@
                     "name": "default",
                     "incList": [
                         "d:\\SDK\\msc51",
-                        "c:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\.\\dependence"
+                        ".\\dependence"
                     ],
                     "libList": [
                         "d:\\SDK\\msc51"
@@ -27,27 +27,55 @@
                 {
                     "name": "STD",
                     "incList": [
-                        "c:\\Keil_v5\\C51\\INC"
+                        ".\\..\\..\\..\\..\\..\\..\\Keil_v5\\C51\\INC"
                     ],
                     "sourceDirList": [],
                     "libList": [
-                        "c:\\Keil_v5\\C51\\LIB"
+                        ".\\..\\..\\..\\..\\..\\..\\Keil_v5\\C51\\LIB"
                     ],
                     "defineList": []
+                },
+                {
+                    "name": "default",
+                    "incList": [],
+                    "libList": [],
+                    "sourceDirList": [],
+                    "defineList": []
+                },
+                {
+                    "name": "toolchain",
+                    "incList": [
+                        ".\\..\\..\\..\\..\\..\\..\\Keil_v5\\C51\\INC",
+                        ".\\dependence\\build-in\\toolchain"
+                    ],
+                    "sourceDirList": [
+                        ".\\dependence\\build-in\\toolchain"
+                    ],
+                    "libList": [
+                        ".\\..\\..\\..\\..\\..\\..\\Keil_v5\\C51\\LIB"
+                    ],
+                    "defineList": [
+                        "__UVISION_VERSION"
+                    ]
                 }
             ]
         }
     ],
     "compileConfig": {
-        "optimizationLevel": "8",
-        "optimizationType": "1",
-        "ramMode": "SMALL",
-        "romMode": "SMALL",
-        "removeUnusedCode": true
+        "options": "null"
     },
     "srcDirs": [
         ".\\src",
         ".\\dependence"
     ],
-    "outDir": ".\\out"
+    "outDir": ".\\out",
+    "mode": "Release",
+    "toolchain": "Keil_C51",
+    "uploader": "stcgal",
+    "excludeList": [],
+    "uploadConfig": {
+        "bin": ".\\out\\Keil_C51\\Sdcc-51.hex",
+        "eepromImgPath": "null",
+        "options": ".eide/stc.flash.json"
+    }
 }

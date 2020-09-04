@@ -9,6 +9,11 @@
         "C_Cpp.errorSquiggles": "Disabled",
         "C_Cpp.default.cppStandard": "c++98",
         "C_Cpp.default.cStandard": "c89",
-        "terminal.explorerKind": "integrated"
+        "terminal.explorerKind": "integrated",
+        "files.associations": {
+            ".eideignore": "ignore"
+        },
+        "files.autoGuessEncoding": true,
+        "EIDE.ARM.Option.AutoGenerateRTE_Components": false
     }
 }
