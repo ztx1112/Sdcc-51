@@ -47,5 +47,6 @@ typedef struct
 void	ADC_Inilize(ADC_InitTypeDef *ADCx);
 void	ADC_PowerControl(u8 pwr);
 u16		Get_ADC10bitResult(u8 channel);	//channel = 0~7
+u8		Get_ADC8bitResult(u8 channel);
 
 #endif

@@ -8,8 +8,7 @@
                 {
                     "name": "default",
                     "incList": [
-                        "d:\\SDK\\msc51",
-                        ".\\dependence"
+                        "d:\\SDK\\msc51"
                     ],
                     "libList": [
                         "d:\\SDK\\msc51"
@@ -45,17 +44,14 @@
                 {
                     "name": "toolchain",
                     "incList": [
-                        ".\\..\\..\\..\\..\\..\\..\\Keil_v5\\C51\\INC",
-                        ".\\dependence\\build-in\\toolchain"
+                        ".\\..\\..\\..\\..\\..\\..\\Keil_v5\\C51\\INC"
                     ],
-                    "sourceDirList": [
-                        ".\\dependence\\build-in\\toolchain"
-                    ],
+                    "sourceDirList": [],
                     "libList": [
                         ".\\..\\..\\..\\..\\..\\..\\Keil_v5\\C51\\LIB"
                     ],
                     "defineList": [
-                        "__UVISION_VERSION"
+                        "__UVISION_VERSION=526"
                     ]
                 }
             ]
@@ -65,8 +61,7 @@
         "options": "null"
     },
     "srcDirs": [
-        ".\\src",
-        ".\\dependence"
+        ".\\src"
     ],
     "outDir": ".\\out",
     "mode": "Release",

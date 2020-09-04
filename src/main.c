@@ -39,6 +39,7 @@ void delay_ms(unsigned int ms)
 
 u16 result1 = 0;
 u16 result2 = 0;
+u8 a, b;
 u8 act;
 u8 n = 0;
 int i = 0;
@@ -174,15 +175,23 @@ void AdcInit()
 
 int AdcExcute()
 {
-	Get_ADC10bitResult(2);
+	// Get_ADC10bitResult(2);
+	// delay_ms(50);
+	// result1 = Get_ADC10bitResult(2);
+	// delay_ms(50);
+	// Get_ADC10bitResult(3);
+	// delay_ms(50);
+	// result2 = Get_ADC10bitResult(3);
+	a = Get_ADC8bitResult(2);
 	delay_ms(50);
-	result1 = Get_ADC10bitResult(2);
+	a = Get_ADC8bitResult(2);
+	result1 = a * 5;
 	delay_ms(50);
-	Get_ADC10bitResult(3);
+	a = Get_ADC8bitResult(3);
 	delay_ms(50);
-	result2 = Get_ADC10bitResult(3);
-	result1 *= 2;
-	result2 *= 2;
+	a = Get_ADC8bitResult(3);
+	delay_ms(50);
+	result2 = a * 5;
 }
 
 int EEPROMend()
@@ -191,8 +200,6 @@ int EEPROMend()
 	delay_ms(5);
 	EEPROM_write_n(0x00, &act, 1);
 }
-
-u8 a, b;
 
 int main()
 {
@@ -214,12 +221,7 @@ int main()
 		delay_ms(500);
 		AdcExcute();
 	}
-	if (result1 < 600)
-		result1 = 650;
-	if (result2 < 600)
-		result2 = 650;
-	result1 = result1 - 600;
-	result2 = result2 - 600;
+
 	EEPROM_read_n(0x0000, &act, 1);
 	if (act > Maxact)
 		act = 0;
@@ -234,22 +236,7 @@ int main()
 	AUXR |= 0x01; //选择定时器2为串口1的波特率发生器
 	ES = 1;		  //使能串口1中断
 
-	a = result1;
-	b = result1 >> 8;
-	SendData(0xff);
 	SendData(a);
-	SendData(0xff);
-	SendData(b);
-
-	SendData(0xf0);
-	SendData(0xf0);
-	a = result2;
-	b = result2 >> 8;
-	SendData(a);
-	SendData(0xf0);
-	SendData(b);
-	SendData(0xaa);
-	SendData(0xaa);
 
 	while (1)
 	{
