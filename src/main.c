@@ -1,10 +1,16 @@
-#include "C:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\src\\STC15Fxxxx.H"
+#include "STC15Fxxxx.H"
 #include <intrins.h>
-#include "C:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\src\\EEPROM.h"
-#include "C:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\src\\adc.h"
+#include "EEPROM.h"
+#include "adc.h"
+#include "timer.h"
 
 #define FOSC 11059200L //系统频率
 #define BAUD 115200	   //串口波特率
+
+#define TIMEOUT 50000
+#define TIME_MAX_COUTER 3000
+
+int timecounter;
 
 sbit X0 = P1 ^ 4;
 sbit X1 = P1 ^ 5;
@@ -14,7 +20,7 @@ sbit X3 = P5 ^ 5;
 sbit Y0 = P3 ^ 3;
 sbit Y1 = P3 ^ 2;
 
-static int Maxact = 3;
+static int Maxact = 4;
 static char Makeup1, Makeup2;
 
 int Act1(); //大先小后
@@ -25,6 +31,19 @@ int Act4(); //小大大小
 void AdcInit();
 int AdcExcute();
 int EEPROMend();
+
+
+/********************* Timer0中断函数************************/
+void timer0_int (void) interrupt TIMER0_VECTOR
+{
+	timecounter+=1;
+	if(timecounter>=TIME_MAX_COUTER)
+	{
+		IAP_CONTR = 0x60;
+	}
+		
+
+}
 
 void delay_ms(unsigned int ms)
 {
@@ -39,7 +58,7 @@ void delay_ms(unsigned int ms)
 
 u16 result1 = 0;
 u16 result2 = 0;
-u8 a, b;
+u16 a, b;
 u8 act;
 u8 n = 0;
 int i = 0;
@@ -47,10 +66,6 @@ u8 X3X = 1;
 u8 X0X = 1;
 u16 addr;
 
-bit busy;
-
-void SendData(u8 dat);
-void SendString(char *s);
 
 int Act1()
 {
@@ -59,6 +74,7 @@ int Act1()
 	{
 		if (X1 == 0)
 		{
+			Timer0_Stop();
 			delay_ms(result1);
 			Y1 = 0;
 			while (1)
@@ -85,6 +101,7 @@ int Act2()
 	{
 		if (X1 == 0)
 		{
+			Timer0_Stop();
 			delay_ms(result1);
 			Y0 = 1;
 			while (1)
@@ -107,6 +124,7 @@ int Act3()
 	{
 		if (X2 == 0)
 		{
+			Timer0_Stop();
 			delay_ms(result2);
 			Y0 = 0;
 			while (1)
@@ -138,6 +156,7 @@ int Act4()
 	{
 		if (X2 == 0)
 		{
+			Timer0_Stop();
 			delay_ms(result2);
 			Y0 = 0;
 			while (1)
@@ -147,6 +166,40 @@ int Act4()
 					delay_ms(result1);
 					Y0 = 1;
 					delay_ms(30);
+					Y1 = 1;
+					while (1)
+					{
+						if (X1 == 1 && X2 == 1)
+						{
+							return;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+int Act5()
+{
+	Y1 = 0;
+	while (1)
+	{
+		if (X2 == 0)
+		{
+			Timer0_Stop();
+			delay_ms(result2);
+			Y0 = 0;
+			while (1)
+			{
+				if (X1 == 0)
+				{
+					delay_ms(result1);
+					Y0 = 1;
+					while (X1 == 1)
+						;
+					delay_ms(80);
+
 					Y1 = 1;
 					while (1)
 					{
@@ -175,23 +228,15 @@ void AdcInit()
 
 int AdcExcute()
 {
-	// Get_ADC10bitResult(2);
-	// delay_ms(50);
-	// result1 = Get_ADC10bitResult(2);
-	// delay_ms(50);
-	// Get_ADC10bitResult(3);
-	// delay_ms(50);
-	// result2 = Get_ADC10bitResult(3);
-	a = Get_ADC8bitResult(2);
+	a = Get_ADC10bitResult(2);
 	delay_ms(50);
-	a = Get_ADC8bitResult(2);
-	result1 = a * 5;
+	a = Get_ADC10bitResult(2);
+	result1 = a - 500;
 	delay_ms(50);
-	a = Get_ADC8bitResult(3);
+	a = Get_ADC10bitResult(3);
 	delay_ms(50);
-	a = Get_ADC8bitResult(3);
-	delay_ms(50);
-	result2 = a * 5;
+	a = Get_ADC10bitResult(3);
+	result2 = a - 500;
 }
 
 int EEPROMend()
@@ -201,22 +246,24 @@ int EEPROMend()
 	EEPROM_write_n(0x00, &act, 1);
 }
 
+
+TIM_InitTypeDef TIMdef;
 int main()
 {
 	P1M1 = 0x0f;
 	P1M0 = 0x00;
-	P3M0 = 0x00;
+	P3M0 = 0x80;
 	P3M1 = 0x00;
 
 	AdcInit();
 	delay_ms(300);
 	AdcExcute();
-	while (result1 == 1024)
+	while (result1 == (1024-500))
 	{
 		delay_ms(500);
 		AdcExcute();
 	}
-	while (result2 == 1024)
+	while (result2 == (1024-500))
 	{
 		delay_ms(500);
 		AdcExcute();
@@ -227,16 +274,26 @@ int main()
 		act = 0;
 	if (act < 0)
 		act = 0;
+
+	TIMdef.TIM_ClkOut=0;
+	TIMdef.TIM_Mode=TIM_16BitAutoReload;
+	TIMdef.TIM_Polity=PolityHigh;
+	TIMdef.TIM_Interrupt=ENABLE;
+	TIMdef.TIM_ClkOut=DISABLE;
+	TIMdef.TIM_Run=DISABLE;
+	TIMdef.TIM_ClkSource=TIM_CLOCK_1T;
+	Timer_Inilize(0,&TIMdef);
+
+	Timer0_Load(TIMEOUT);
+
 	P1 = 0XFF;
+	P10 = 0;
+	P11 = 0;
+	P37 = 1;
 
-	SCON = 0x50;					   //8位可变波特率
-	T2L = (65536 - (FOSC / 4 / BAUD)); //设置波特率重装值
-	T2H = (65536 - (FOSC / 4 / BAUD)) >> 8;
-	AUXR = 0x14;  //T2为1T模式, 并启动定时器2
-	AUXR |= 0x01; //选择定时器2为串口1的波特率发生器
-	ES = 1;		  //使能串口1中断
+	EA = 1;
 
-	SendData(a);
+	timecounter=0;
 
 	while (1)
 	{
@@ -245,6 +302,9 @@ int main()
 			delay_ms(5);
 			if (X0 == 0)
 			{
+				Timer0_Stop();
+				Timer0_Load(TIMEOUT);
+				Timer0_Run();
 				switch (act)
 				{
 				case 0:
@@ -258,6 +318,9 @@ int main()
 					break;
 				case 3:
 					Act4();
+					break;
+				case 4:
+					Act5();
 					break;
 				default:
 					break;
@@ -290,43 +353,3 @@ int main()
 	}
 }
 
-/*----------------------------
-UART 中断服务程序
------------------------------*/
-void Uart() interrupt 4
-{
-	if (RI)
-	{
-		RI = 0;	   //清除RI位
-		P0 = SBUF; //P0显示串口数据
-	}
-	if (TI)
-	{
-		TI = 0;	  //清除TI位
-		busy = 0; //清忙标志
-	}
-}
-
-/*----------------------------
-发送串口数据
-----------------------------*/
-void SendData(u8 dat)
-{
-	while (busy)
-		;	   //等待前面的数据发送完成
-	ACC = dat; //获取校验位P (PSW.0)
-
-	busy = 1;
-	SBUF = ACC; //写数据到UART数据寄存器
-}
-
-/*----------------------------
-发送字符串
-----------------------------*/
-void SendString(char *s)
-{
-	while (*s) //检测字符串结束标志
-	{
-		SendData(*s++); //发送当前字符
-	}
-}

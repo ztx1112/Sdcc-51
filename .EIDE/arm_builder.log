@@ -1,3 +1,33 @@
 [2020-09-04 18:16:22]	Compilation failed at : "c:\Users\Administrator\Documents\Source\MCU\Sdcc-51\src\main.c", Exit Code: 2
    在 ARM_Builder_V6.Program.Main(String[] args)
 
+[2020-09-14 09:16:13]	compilation failed at : "d:\XiTonG\backup\我的文档\Source\MCU\Sdcc-51\src\ADC.c", exit code: 1
+   在 ARM_Builder_V6.Program.Main(String[] args)
+
+[2020-09-14 09:17:14]	compilation failed at : "d:\XiTonG\backup\我的文档\Source\MCU\Sdcc-51\src\ADC.c", exit code: 1
+   在 ARM_Builder_V6.Program.Main(String[] args)
+
+[2020-09-14 09:18:04]	compilation failed at : "d:\XiTonG\backup\我的文档\Source\MCU\Sdcc-51\src\ADC.c", exit code: 1
+   在 ARM_Builder_V6.Program.Main(String[] args)
+
+[2020-09-14 09:21:27]	compilation failed at : "d:\XiTonG\backup\我的文档\Source\MCU\Sdcc-51\src\ADC.c", exit code: 1
+   在 ARM_Builder_V6.Program.Main(String[] args)
+
+[2020-09-14 09:22:08]	compilation failed at : "d:\XiTonG\backup\我的文档\Source\MCU\Sdcc-51\src\ADC.c", exit code: 1
+   在 ARM_Builder_V6.Program.Main(String[] args)
+
+[2020-09-14 14:46:58]	compilation failed at : "d:\XiTonG\backup\我的文档\Source\MCU\Sdcc-51\src\EEPROM.c", exit code: 2
+   在 ARM_Builder_V6.Program.Main(String[] args)
+
+[2020-09-28 20:27:33]	compilation failed at : "d:\XiTonG\backup\我的文档\Source\MCU\Sdcc-51\src\main.c", exit code: 2
+   在 ARM_Builder_V6.Program.Main(String[] args)
+
+[2020-10-21 09:45:35]	compilation failed at : "d:\XiTonG\backup\我的文档\Source\MCU\Sdcc-51\src\main.c", exit code: 2
+   在 ARM_Builder_V6.Program.Main(String[] args)
+
+[2020-10-21 10:28:13]	link failed !, exit code: 2
+   在 ARM_Builder_V6.Program.Main(String[] args)
+
+[2020-10-21 10:29:16]	link failed !, exit code: 2
+   在 ARM_Builder_V6.Program.Main(String[] args)
+

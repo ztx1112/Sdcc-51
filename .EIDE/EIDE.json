@@ -8,13 +8,13 @@
                 {
                     "name": "default",
                     "incList": [
-                        "d:\\SDK\\msc51"
+                        ".\\..\\..\\..\\..\\..\\..\\SDK\\msc51"
                     ],
                     "libList": [
-                        "d:\\SDK\\msc51"
+                        ".\\..\\..\\..\\..\\..\\..\\SDK\\msc51"
                     ],
                     "sourceDirList": [
-                        "d:\\SDK\\msc51"
+                        ".\\..\\..\\..\\..\\..\\..\\SDK\\msc51"
                     ],
                     "defineList": []
                 }
@@ -25,13 +25,9 @@
             "depList": [
                 {
                     "name": "STD",
-                    "incList": [
-                        ".\\..\\..\\..\\..\\..\\..\\Keil_v5\\C51\\INC"
-                    ],
+                    "incList": [],
                     "sourceDirList": [],
-                    "libList": [
-                        ".\\..\\..\\..\\..\\..\\..\\Keil_v5\\C51\\LIB"
-                    ],
+                    "libList": [],
                     "defineList": []
                 },
                 {
@@ -44,11 +40,11 @@
                 {
                     "name": "toolchain",
                     "incList": [
-                        ".\\..\\..\\..\\..\\..\\..\\Keil_v5\\C51\\INC"
+                        "C:\\Keil_v5\\C51\\INC"
                     ],
                     "sourceDirList": [],
                     "libList": [
-                        ".\\..\\..\\..\\..\\..\\..\\Keil_v5\\C51\\LIB"
+                        "C:\\Keil_v5\\C51\\LIB"
                     ],
                     "defineList": [
                         "__UVISION_VERSION=526"
@@ -72,5 +68,8 @@
         "bin": ".\\out\\Keil_C51\\Sdcc-51.hex",
         "eepromImgPath": "null",
         "options": ".eide/stc.flash.json"
+    },
+    "miscInfo": {
+        "lastBuildTime": 1603248556102
     }
 }

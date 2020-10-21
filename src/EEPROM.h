@@ -2,7 +2,7 @@
 #ifndef	__EEPROM_H
 #define	__EEPROM_H
 
-#include	"C:\\Users\\Administrator\\Documents\\Source\\MCU\\Sdcc-51\\src\\config.h"
+#include	"config.h"
 
 //	选择MCU型号
 #define	MCU_Type	STC15F_L2K08S2	//STC15F_L2K08S2, STC15F_L2K16S2, STC15F_L2K24S2, STC15F_L2K32S2, STC15F_L2K40S2, STC15F_L2K48S2, STC15F_L2K56S2, STC15F_L2K60S2, IAP15F_L2K61S2

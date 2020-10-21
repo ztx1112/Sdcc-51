@@ -104,11 +104,13 @@ u8	Get_ADC8bitResult(u8 channel)	//channel = 0~7
 			ADC_CONTR &= ~ADC_FLAG;
 			if(PCON2 &  (1<<5))		//10位AD结果的高2位放ADC_RES的低2位，低8位在ADC_RESL。
 			{
-				adc =  ADC_RESL;
+				adc = (u16)(ADC_RES & 3);
+				adc = (adc << 8) | ADC_RESL;
 			}
 			else		//10位AD结果的高8位放ADC_RES，低2位在ADC_RESL的低2位。
 			{
-				adc = ADC_RES;
+				adc = (u16)ADC_RES;
+				adc = (adc << 2) | (ADC_RESL & 3);
 			}
 			return	adc;
 		}
