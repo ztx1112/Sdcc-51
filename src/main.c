@@ -4,11 +4,8 @@
 #include "adc.h"
 #include "timer.h"
 
-#define FOSC 11059200L //系统频率
-#define BAUD 115200	   //串口波特率
-
 #define TIMEOUT 50000
-#define TIME_MAX_COUTER 3000
+#define TIME_MAX_COUTER 2000
 
 int timecounter;
 
@@ -32,17 +29,14 @@ void AdcInit();
 int AdcExcute();
 int EEPROMend();
 
-
 /********************* Timer0中断函数************************/
-void timer0_int (void) interrupt TIMER0_VECTOR
+void timer0_int(void) interrupt TIMER0_VECTOR
 {
-	timecounter+=1;
-	if(timecounter>=TIME_MAX_COUTER)
+	timecounter += 1;
+	if (timecounter >= TIME_MAX_COUTER)
 	{
 		IAP_CONTR = 0x60;
 	}
-		
-
 }
 
 void delay_ms(unsigned int ms)
@@ -65,7 +59,6 @@ int i = 0;
 u8 X3X = 1;
 u8 X0X = 1;
 u16 addr;
-
 
 int Act1()
 {
@@ -246,7 +239,6 @@ int EEPROMend()
 	EEPROM_write_n(0x00, &act, 1);
 }
 
-
 TIM_InitTypeDef TIMdef;
 int main()
 {
@@ -258,12 +250,12 @@ int main()
 	AdcInit();
 	delay_ms(300);
 	AdcExcute();
-	while (result1 == (1024-500))
+	while (result1 == (1024 - 500))
 	{
 		delay_ms(500);
 		AdcExcute();
 	}
-	while (result2 == (1024-500))
+	while (result2 == (1024 - 500))
 	{
 		delay_ms(500);
 		AdcExcute();
@@ -275,14 +267,14 @@ int main()
 	if (act < 0)
 		act = 0;
 
-	TIMdef.TIM_ClkOut=0;
-	TIMdef.TIM_Mode=TIM_16BitAutoReload;
-	TIMdef.TIM_Polity=PolityHigh;
-	TIMdef.TIM_Interrupt=ENABLE;
-	TIMdef.TIM_ClkOut=DISABLE;
-	TIMdef.TIM_Run=DISABLE;
-	TIMdef.TIM_ClkSource=TIM_CLOCK_1T;
-	Timer_Inilize(0,&TIMdef);
+	TIMdef.TIM_ClkOut = 0;
+	TIMdef.TIM_Mode = TIM_16BitAutoReload;
+	TIMdef.TIM_Polity = PolityHigh;
+	TIMdef.TIM_Interrupt = ENABLE;
+	TIMdef.TIM_ClkOut = DISABLE;
+	TIMdef.TIM_Run = DISABLE;
+	TIMdef.TIM_ClkSource = TIM_CLOCK_1T;
+	Timer_Inilize(0, &TIMdef);
 
 	Timer0_Load(TIMEOUT);
 
@@ -293,7 +285,7 @@ int main()
 
 	EA = 1;
 
-	timecounter=0;
+	timecounter = 0;
 
 	while (1)
 	{
@@ -302,6 +294,7 @@ int main()
 			delay_ms(5);
 			if (X0 == 0)
 			{
+				timecounter=0;
 				Timer0_Stop();
 				Timer0_Load(TIMEOUT);
 				Timer0_Run();
@@ -352,4 +345,3 @@ int main()
 		}
 	}
 }
-
