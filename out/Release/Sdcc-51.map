@@ -1,4 +1,4 @@
-LX51 LINKER/LOCATER V4.66.62.0                                                          10/21/2020  11:19:48  PAGE 1
+LX51 LINKER/LOCATER V4.66.62.0                                                          10/21/2020  11:34:18  PAGE 1
 
 
 LX51 LINKER/LOCATER V4.66.62.0, INVOKED BY:
@@ -37,7 +37,7 @@ ACTIVE MEMORY CLASSES OF MODULE:  .\OUT\RELEASE\SDCC-51 (ADC)
 
 BASE        START       END         USED      MEMORY CLASS
 ==========================================================
-C:000000H   C:000000H   C:00FFFFH   000680H   CODE
+C:000000H   C:000000H   C:00FFFFH   000685H   CODE
 I:000000H   I:000000H   I:00007FH   00002DH   DATA
 I:000000H   I:000000H   I:0000FFH   000001H   IDATA
 
@@ -67,28 +67,28 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 00002EH   000058H   00002BH   BYTE   UNIT     CODE           ?PR?ACT5?MAIN
 000059H   000062H   00000AH   ---    ---      **GAP**
 000063H   000065H   000003H   BYTE   OFFS..   CODE           ?TIMER?00063
-LX51 LINKER/LOCATER V4.66.62.0                                                        10/21/2020  11:19:48  PAGE 2
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/21/2020  11:34:18  PAGE 2
 
 
 000066H   000200H   00019BH   BYTE   UNIT     CODE           ?PR?_TIMER_INILIZE?TIMER
-000201H   000338H   000138H   BYTE   UNIT     CODE           ?PR?MAIN?MAIN
-000339H   0003C8H   000090H   BYTE   UNIT     CODE           ?C?LIB_CODE
-0003C9H   000425H   00005DH   BYTE   UNIT     CODE           ?PR?_GET_ADC10BITRESULT?ADC
-000426H   000477H   000052H   BYTE   UNIT     CODE           ?PR?ADCEXCUTE?MAIN
-000478H   0004B4H   00003DH   BYTE   UNIT     CODE           ?PR?_EEPROM_READ_N?EEPROM
-0004B5H   0004F1H   00003DH   BYTE   UNIT     CODE           ?PR?_EEPROM_WRITE_N?EEPROM
-0004F2H   000519H   000028H   BYTE   UNIT     CODE           ?PR?ACT3?MAIN
-00051AH   000541H   000028H   BYTE   UNIT     CODE           ?PR?ACT4?MAIN
-000542H   000564H   000023H   BYTE   UNIT     CODE           ?PR?ACT1?MAIN
-000565H   000583H   00001FH   BYTE   UNIT     CODE           ?PR?_EEPROM_SECTORERASE?EEPROM
-000584H   0005A2H   00001FH   BYTE   UNIT     CODE           ?PR?TIMER0_INT?MAIN
-0005A3H   0005C1H   00001FH   BYTE   UNIT     CODE           ?PR?ADCINIT?MAIN
-0005C2H   0005DEH   00001DH   BYTE   UNIT     CODE           ?PR?_DELAY_MS?MAIN
-0005DFH   0005F8H   00001AH   BYTE   UNIT     CODE           ?C_INITSEG
-0005F9H   000609H   000011H   BYTE   UNIT     CODE           ?PR?ACT2?MAIN
-00060AH   000617H   00000EH   BYTE   UNIT     CODE           ?PR?DISABLEEEPROM?EEPROM
-000618H   000B62H   00054BH   ---    ---      **GAP**
-000B63H   000BEEH   00008CH   BYTE   UNIT     CODE           ?C_C51STARTUP
+000201H   00033DH   00013DH   BYTE   UNIT     CODE           ?PR?MAIN?MAIN
+00033EH   0003CDH   000090H   BYTE   UNIT     CODE           ?C?LIB_CODE
+0003CEH   00042AH   00005DH   BYTE   UNIT     CODE           ?PR?_GET_ADC10BITRESULT?ADC
+00042BH   00047CH   000052H   BYTE   UNIT     CODE           ?PR?ADCEXCUTE?MAIN
+00047DH   0004B9H   00003DH   BYTE   UNIT     CODE           ?PR?_EEPROM_READ_N?EEPROM
+0004BAH   0004F6H   00003DH   BYTE   UNIT     CODE           ?PR?_EEPROM_WRITE_N?EEPROM
+0004F7H   00051EH   000028H   BYTE   UNIT     CODE           ?PR?ACT3?MAIN
+00051FH   000546H   000028H   BYTE   UNIT     CODE           ?PR?ACT4?MAIN
+000547H   000569H   000023H   BYTE   UNIT     CODE           ?PR?ACT1?MAIN
+00056AH   000588H   00001FH   BYTE   UNIT     CODE           ?PR?_EEPROM_SECTORERASE?EEPROM
+000589H   0005A7H   00001FH   BYTE   UNIT     CODE           ?PR?TIMER0_INT?MAIN
+0005A8H   0005C6H   00001FH   BYTE   UNIT     CODE           ?PR?ADCINIT?MAIN
+0005C7H   0005E3H   00001DH   BYTE   UNIT     CODE           ?PR?_DELAY_MS?MAIN
+0005E4H   0005FDH   00001AH   BYTE   UNIT     CODE           ?C_INITSEG
+0005FEH   00060EH   000011H   BYTE   UNIT     CODE           ?PR?ACT2?MAIN
+00060FH   00061CH   00000EH   BYTE   UNIT     CODE           ?PR?DISABLEEEPROM?EEPROM
+00061DH   000B67H   00054BH   ---    ---      **GAP**
+000B68H   000BF3H   00008CH   BYTE   UNIT     CODE           ?C_C51STARTUP
 
 * * * * * * * * *   R E M O V E D     S E G M E N T S   * * * * * * * *
    *DEL*:           000053H   BYTE   UNIT     CODE           ?PR?_ADC_INILIZE?ADC
@@ -135,7 +135,7 @@ MAIN/MAIN                       ----- -----  ----- -----
   +--> ACT3/MAIN
   +--> ACT4/MAIN
   +--> ACT5/MAIN
-LX51 LINKER/LOCATER V4.66.62.0                                                        10/21/2020  11:19:48  PAGE 3
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/21/2020  11:34:18  PAGE 3
 
 
   +--> _EEPROM_SECTORERASE/EEPROM
@@ -191,39 +191,39 @@ PUBLIC SYMBOLS OF MODULE:  .\OUT\RELEASE\SDCC-51 (ADC)
       =================================================
       00000026H   DATA     BYTE      ?_EEPROM_read_n?BYTE
       00000026H   DATA     BYTE      ?_EEPROM_write_n?BYTE
-      01000352H   CODE     ---       ?C?CLDOPTR
-      01000339H   CODE     ---       ?C?CLDPTR
+      01000357H   CODE     ---       ?C?CLDOPTR
+      0100033EH   CODE     ---       ?C?CLDPTR
       00000000H   NUMBER   ---       ?C?CODESEG
-      0100037FH   CODE     ---       ?C?CSTPTR
-      01000391H   CODE     ---       ?C?ILDOPTR
+      01000384H   CODE     ---       ?C?CSTPTR
+      01000396H   CODE     ---       ?C?ILDOPTR
       00000000H   NUMBER   ---       ?C?XDATASEG
-      01000BAAH   CODE     ---       ?C_START
+      01000BAFH   CODE     ---       ?C_START
       01000000H   CODE     ---       ?C_STARTUP
 *DEL*:00000000H   CODE     ---       _ADC_Inilize
 *DEL*:00000000H   CODE     ---       _ADC_PowerControl
-      010005C8H   CODE     ---       _delay_ms
-      01000478H   CODE     ---       _EEPROM_read_n
-LX51 LINKER/LOCATER V4.66.62.0                                                        10/21/2020  11:19:48  PAGE 4
+      010005CDH   CODE     ---       _delay_ms
+      0100047DH   CODE     ---       _EEPROM_read_n
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/21/2020  11:34:18  PAGE 4
 
 
-      01000565H   CODE     ---       _EEPROM_SectorErase
-      010004B5H   CODE     ---       _EEPROM_write_n
-      010003C9H   CODE     ---       _Get_ADC10bitResult
+      0100056AH   CODE     ---       _EEPROM_SectorErase
+      010004BAH   CODE     ---       _EEPROM_write_n
+      010003CEH   CODE     ---       _Get_ADC10bitResult
 *DEL*:00000000H   CODE     ---       _Get_ADC8bitResult
       01000066H   CODE     ---       _Timer_Inilize
       0000001CH   DATA     WORD      a
       00000016H   DATA     BYTE      act
-      01000542H   CODE     ---       Act1
-      010005F9H   CODE     ---       Act2
-      010004F2H   CODE     ---       Act3
-      0100051AH   CODE     ---       Act4
+      01000547H   CODE     ---       Act1
+      010005FEH   CODE     ---       Act2
+      010004F7H   CODE     ---       Act3
+      0100051FH   CODE     ---       Act4
       0100002EH   CODE     ---       Act5
       01000003H   CODE     ---       ADC_int
-      01000426H   CODE     ---       AdcExcute
-      010005A3H   CODE     ---       AdcInit
+      0100042BH   CODE     ---       AdcExcute
+      010005A8H   CODE     ---       AdcInit
       00000012H   DATA     WORD      addr
       0000001EH   DATA     WORD      b
-      0100060AH   CODE     ---       DisableEEPROM
+      0100060FH   CODE     ---       DisableEEPROM
 *DEL*:00000000H   CODE     ---       EEPROMend
       00000023H   DATA     INT       i
       01000201H   CODE     ---       main
@@ -232,7 +232,7 @@ PUBLIC SYMBOLS OF MODULE:  .\OUT\RELEASE\SDCC-51 (ADC)
       00000019H   DATA     WORD      result2
       0000000AH   DATA     ---       TIMdef
       00000014H   DATA     INT       timecounter
-      01000584H   CODE     ---       timer0_int
+      01000589H   CODE     ---       timer0_int
       0100000AH   CODE     ---       timer1_int
       01000007H   CODE     ---       timer2_int
       0000001BH   DATA     BYTE      X0X
@@ -246,10 +246,10 @@ SYMBOL TABLE OF MODULE:  .\OUT\RELEASE\SDCC-51 (ADC)
       ====================================================
       ---         MODULE    ---      ---       ADC
       01000003H   PUBLIC    CODE     ---       ADC_int
-      010003C9H   PUBLIC    CODE     ---       _Get_ADC10bitResult
+      010003CEH   PUBLIC    CODE     ---       _Get_ADC10bitResult
 
-      010003C9H   BLOCK     CODE     ---       LVL=0
-      010003C9H   BLOCK     CODE     NEAR LAB  LVL=1
+      010003CEH   BLOCK     CODE     ---       LVL=0
+      010003CEH   BLOCK     CODE     NEAR LAB  LVL=1
       00000004H   SYMBOL    DATA     VOID      adc
       00000003H   SYMBOL    DATA     VOID      i
       ---         BLOCKEND  ---      ---       LVL=1
@@ -262,25 +262,25 @@ SYMBOL TABLE OF MODULE:  .\OUT\RELEASE\SDCC-51 (ADC)
 
       ---         MODULE    ---      ---       EEPROM
       00000026H   PUBLIC    DATA     BYTE      ?_EEPROM_write_n?BYTE
-      010004B5H   PUBLIC    CODE     ---       _EEPROM_write_n
-      01000565H   PUBLIC    CODE     ---       _EEPROM_SectorErase
+      010004BAH   PUBLIC    CODE     ---       _EEPROM_write_n
+      0100056AH   PUBLIC    CODE     ---       _EEPROM_SectorErase
       00000026H   PUBLIC    DATA     BYTE      ?_EEPROM_read_n?BYTE
-      01000478H   PUBLIC    CODE     ---       _EEPROM_read_n
-      0100060AH   PUBLIC    CODE     ---       DisableEEPROM
+      0100047DH   PUBLIC    CODE     ---       _EEPROM_read_n
+      0100060FH   PUBLIC    CODE     ---       DisableEEPROM
 
-      0100060AH   BLOCK     CODE     ---       LVL=0
+      0100060FH   BLOCK     CODE     ---       LVL=0
       ---         BLOCKEND  ---      ---       LVL=0
 
-LX51 LINKER/LOCATER V4.66.62.0                                                        10/21/2020  11:19:48  PAGE 5
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/21/2020  11:34:18  PAGE 5
 
 
-      01000478H   BLOCK     CODE     ---       LVL=0
+      0100047DH   BLOCK     CODE     ---       LVL=0
       ---         BLOCKEND  ---      ---       LVL=0
 
-      01000565H   BLOCK     CODE     ---       LVL=0
+      0100056AH   BLOCK     CODE     ---       LVL=0
       ---         BLOCKEND  ---      ---       LVL=0
 
-      010004B5H   BLOCK     CODE     ---       LVL=0
+      010004BAH   BLOCK     CODE     ---       LVL=0
       ---         BLOCKEND  ---      ---       LVL=0
 
       ---         MODULE    ---      ---       MAIN
@@ -297,49 +297,49 @@ SYMBOL TABLE OF MODULE:  .\OUT\RELEASE\SDCC-51 (ADC)
       00000012H   PUBLIC    DATA     WORD      addr
       0000000AH   PUBLIC    DATA     ---       TIMdef
       01000201H   PUBLIC    CODE     ---       main
-      01000426H   PUBLIC    CODE     ---       AdcExcute
-      010005A3H   PUBLIC    CODE     ---       AdcInit
+      0100042BH   PUBLIC    CODE     ---       AdcExcute
+      010005A8H   PUBLIC    CODE     ---       AdcInit
       0100002EH   PUBLIC    CODE     ---       Act5
-      0100051AH   PUBLIC    CODE     ---       Act4
-      010004F2H   PUBLIC    CODE     ---       Act3
-      010005F9H   PUBLIC    CODE     ---       Act2
-      01000542H   PUBLIC    CODE     ---       Act1
-      010005C8H   PUBLIC    CODE     ---       _delay_ms
-      01000584H   PUBLIC    CODE     ---       timer0_int
+      0100051FH   PUBLIC    CODE     ---       Act4
+      010004F7H   PUBLIC    CODE     ---       Act3
+      010005FEH   PUBLIC    CODE     ---       Act2
+      01000547H   PUBLIC    CODE     ---       Act1
+      010005CDH   PUBLIC    CODE     ---       _delay_ms
+      01000589H   PUBLIC    CODE     ---       timer0_int
 
-      01000584H   BLOCK     CODE     ---       LVL=0
+      01000589H   BLOCK     CODE     ---       LVL=0
       ---         BLOCKEND  ---      ---       LVL=0
 
-      010005C2H   BLOCK     CODE     ---       LVL=0
+      010005C7H   BLOCK     CODE     ---       LVL=0
       ---         BLOCKEND  ---      ---       LVL=0
 
-      010005C8H   BLOCK     CODE     ---       LVL=0
-      010005C8H   BLOCK     CODE     NEAR LAB  LVL=1
+      010005CDH   BLOCK     CODE     ---       LVL=0
+      010005CDH   BLOCK     CODE     NEAR LAB  LVL=1
       00000004H   SYMBOL    DATA     VOID      i
       ---         BLOCKEND  ---      ---       LVL=1
       ---         BLOCKEND  ---      ---       LVL=0
 
-      01000542H   BLOCK     CODE     ---       LVL=0
+      01000547H   BLOCK     CODE     ---       LVL=0
       ---         BLOCKEND  ---      ---       LVL=0
 
-      010005F9H   BLOCK     CODE     ---       LVL=0
+      010005FEH   BLOCK     CODE     ---       LVL=0
       ---         BLOCKEND  ---      ---       LVL=0
 
-      010004F2H   BLOCK     CODE     ---       LVL=0
+      010004F7H   BLOCK     CODE     ---       LVL=0
       ---         BLOCKEND  ---      ---       LVL=0
 
-      0100051AH   BLOCK     CODE     ---       LVL=0
+      0100051FH   BLOCK     CODE     ---       LVL=0
       ---         BLOCKEND  ---      ---       LVL=0
 
       0100002EH   BLOCK     CODE     ---       LVL=0
       ---         BLOCKEND  ---      ---       LVL=0
 
-      010005A3H   BLOCK     CODE     ---       LVL=0
+      010005A8H   BLOCK     CODE     ---       LVL=0
       ---         BLOCKEND  ---      ---       LVL=0
 
-      01000426H   BLOCK     CODE     ---       LVL=0
+      0100042BH   BLOCK     CODE     ---       LVL=0
       ---         BLOCKEND  ---      ---       LVL=0
-LX51 LINKER/LOCATER V4.66.62.0                                                        10/21/2020  11:19:48  PAGE 6
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/21/2020  11:34:18  PAGE 6
 
 
 
@@ -364,23 +364,23 @@ SYMBOL TABLE OF MODULE:  .\OUT\RELEASE\SDCC-51 (ADC)
       01000000H   PUBLIC    CODE     ---       ?C_STARTUP
 
       ---         MODULE    ---      ---       ?C?CLDPTR
-      01000339H   PUBLIC    CODE     ---       ?C?CLDPTR
+      0100033EH   PUBLIC    CODE     ---       ?C?CLDPTR
 
       ---         MODULE    ---      ---       ?C?CLDOPTR
-      01000352H   PUBLIC    CODE     ---       ?C?CLDOPTR
+      01000357H   PUBLIC    CODE     ---       ?C?CLDOPTR
 
       ---         MODULE    ---      ---       ?C?CSTPTR
-      0100037FH   PUBLIC    CODE     ---       ?C?CSTPTR
+      01000384H   PUBLIC    CODE     ---       ?C?CSTPTR
 
       ---         MODULE    ---      ---       ?C?ILDOPTR
-      01000391H   PUBLIC    CODE     ---       ?C?ILDOPTR
+      01000396H   PUBLIC    CODE     ---       ?C?ILDOPTR
 
       ---         MODULE    ---      ---       ?C_INIT
-      01000BAAH   PUBLIC    CODE     ---       ?C_START
+      01000BAFH   PUBLIC    CODE     ---       ?C_START
 
 ******************************************************************************
-* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0626H BYTE (76%) *
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 062BH BYTE (77%) *
 ******************************************************************************
 
-Program Size: data=46.0 xdata=0 const=0 code=1664
+Program Size: data=46.0 xdata=0 const=0 code=1669
 LX51 RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

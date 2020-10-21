@@ -301,6 +301,7 @@ int main()
 			delay_ms(5);
 			if (X0 == 0)
 			{
+				timecounter=0;
 				Timer0_Stop();
 				Timer0_Load(TIMEOUT);
 				Timer0_Run();
