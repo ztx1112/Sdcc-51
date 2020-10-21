@@ -65,11 +65,11 @@
     "uploader": "stcgal",
     "excludeList": [],
     "uploadConfig": {
-        "bin": ".\\out\\Keil_C51\\Sdcc-51.hex",
+        "bin": ".\\out\\Release\\Sdcc-51.hex",
         "eepromImgPath": "null",
         "options": ".eide/stc.flash.json"
     },
     "miscInfo": {
-        "lastBuildTime": 1603248556102
+        "lastBuildTime": 1603250386255
     }
 }

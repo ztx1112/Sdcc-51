@@ -4,18 +4,15 @@
 #include "adc.h"
 #include "timer.h"
 
-#define FOSC 11059200L //系统频率
-#define BAUD 115200	   //串口波特率
-
 #define TIMEOUT 50000
-#define TIME_MAX_COUTER 3000
+#define TIME_MAX_COUTER 1000
 
 int timecounter;
 
-sbit X0 = P1 ^ 4;
-sbit X1 = P1 ^ 5;
-sbit X2 = P5 ^ 4;
-sbit X3 = P5 ^ 5;
+sbit X0 = P1 ^ 2;
+sbit X1 = P1 ^ 3;
+sbit X2 = P1 ^ 4;
+sbit X3 = P1 ^ 5;
 
 sbit Y0 = P3 ^ 3;
 sbit Y1 = P3 ^ 2;
@@ -216,7 +213,7 @@ int Act5()
 
 void AdcInit()
 {
-	P1ASF = ADC_P12 | ADC_P13;
+	P1ASF = ADC_P10 | ADC_P11;
 	ADC_CONTR = (ADC_CONTR & ~ADC_90T) | ADC_360T;
 	ADC_CONTR |= 0x80;
 	CLK_DIV |= (1 << 5); //10位AD结果的高2位放ADC_RES的低2位，低8位在ADC_RESL。
@@ -228,14 +225,14 @@ void AdcInit()
 
 int AdcExcute()
 {
-	a = Get_ADC10bitResult(2);
+	a = Get_ADC10bitResult(0);
 	delay_ms(50);
-	a = Get_ADC10bitResult(2);
+	a = Get_ADC10bitResult(0);
 	result1 = a - 500;
 	delay_ms(50);
-	a = Get_ADC10bitResult(3);
+	a = Get_ADC10bitResult(1);
 	delay_ms(50);
-	a = Get_ADC10bitResult(3);
+	a = Get_ADC10bitResult(1);
 	result2 = a - 500;
 }
 
@@ -250,10 +247,12 @@ int EEPROMend()
 TIM_InitTypeDef TIMdef;
 int main()
 {
-	P1M1 = 0x0f;
+	P1M1 = 0x03;
 	P1M0 = 0x00;
 	P3M0 = 0x80;
 	P3M1 = 0x00;
+	P3=0xff;
+	P1=0xff;
 
 	AdcInit();
 	delay_ms(300);
